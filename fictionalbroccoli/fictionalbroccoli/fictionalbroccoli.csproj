@@ -16,5 +16,6 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Mono.Android" />
+    <Reference Include="mscorlib" />
   </ItemGroup>
 </Project>

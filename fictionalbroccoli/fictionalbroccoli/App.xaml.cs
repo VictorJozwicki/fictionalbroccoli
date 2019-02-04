@@ -4,10 +4,11 @@ using fictionalbroccoli.ViewModels;
 using fictionalbroccoli.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using fictionalbroccoli.Services;
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace fictionalbroccoli
-{
+{   
     public partial class App
     {
         /* 
@@ -41,6 +42,9 @@ namespace fictionalbroccoli
 
             // Menu
             containerRegistry.RegisterForNavigation<AppliMenu, AppliMenuViewModel>();
+
+            // Services
+            containerRegistry.RegisterSingleton<IRegisterService, RegisterService>();
         }
     }
 }
