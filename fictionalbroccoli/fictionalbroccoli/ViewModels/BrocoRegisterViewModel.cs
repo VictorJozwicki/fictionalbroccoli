@@ -9,11 +9,11 @@ using Prism.Services;
 
 namespace fictionalbroccoli.ViewModels
 {
-    public class BonusViewModel : ViewModelBase
+    public class BrocoRegisterViewModel : ViewModelBase
     {
-        public BonusViewModel(INavigationService navigationService) : base(navigationService)
+        public BrocoRegisterViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Bonus";
+            Title = "Enregistrements";
         }
     }
 }

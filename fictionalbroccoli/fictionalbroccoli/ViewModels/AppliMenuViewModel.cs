@@ -41,23 +41,23 @@ namespace fictionalbroccoli.ViewModels
         // Application
         void HandleMap()
         {
-            _navigationService.NavigateAsync("NavigationPage/PageExample");
+            _navigationService.NavigateAsync("NavigationPage/BrocoMap");
         }
 
         void HandleRegister()
         {
-            _navigationService.NavigateAsync("NavigationPage/PageExample");
+            _navigationService.NavigateAsync("NavigationPage/BrocoRegister");
         }
 
         void HandleNew()
         {
-            _navigationService.NavigateAsync("NavigationPage/PageExample");
+            _navigationService.NavigateAsync("NavigationPage/BrocoNew");
         }
 
         // Bonus
         void HandleBonus()
         {
-            _navigationService.NavigateAsync("NavigationPage/Bonus");
+            _navigationService.NavigateAsync("NavigationPage/BrocoBonus");
         }
 
 

@@ -1,8 +1,8 @@
 namespace fictionalbroccoli.Views
 {
-    public partial class Bonus
+    public partial class BrocoBonus
     {
-        public Bonus()
+        public BrocoBonus()
         {
             InitializeComponent();
         }
