@@ -23,7 +23,7 @@ namespace fictionalbroccoli
         {
             InitializeComponent();
 
-            await NavigationService.NavigateAsync("Menu/NavigationPage/MainPage");
+            await NavigationService.NavigateAsync("AppliMenu/NavigationPage/MainPage");
         }
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
@@ -31,6 +31,7 @@ namespace fictionalbroccoli
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<PageExample, PageExampleViewModel>();
+            containerRegistry.RegisterForNavigation<AppliMenu, AppliMenuViewModel>();
         }
     }
 }

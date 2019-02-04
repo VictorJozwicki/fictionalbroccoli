@@ -1,8 +1,10 @@
+using Xamarin.Forms;
+
 namespace fictionalbroccoli.Views
 {
-    public partial class Menu
+    public partial class AppliMenu : MasterDetailPage
     {
-        public Menu()
+        public AppliMenu()
         {
             InitializeComponent();
         }

@@ -3,12 +3,13 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
                     xmlns:prism="clr-namespace:Prism.Mvvm;assembly=Prism.Forms"
                     prism:ViewModelLocator.AutowireViewModel="True"
-                    x:Class="fictionalbroccoli.Views.Menu"
-                    Title="{Binding Title}">
+                    x:Class="fictionalbroccoli.Views.AppliMenu"
+                    >
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
             <StackLayout>
-                <Button Text="PageExample" Command="{Binding CommandGoB}" />     
+                <Button Text="Home" Command="{Binding CommandGoHome}" />  
+                <Button Text="PageExample" Command="{Binding CommandGoExample}" /> 
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>
