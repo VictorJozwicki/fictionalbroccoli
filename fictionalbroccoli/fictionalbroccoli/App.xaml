@@ -4,6 +4,18 @@
                         xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms" 
                         x:Class="fictionalbroccoli.App">
     <Application.Resources>
-        <!-- Application resource dictionary -->
+        <ResourceDictionary>
+            <Style x:Key="test" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Teal" />
+            </Style>
+            
+            <Style x:Key="labelOne" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Teal" />
+            </Style>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

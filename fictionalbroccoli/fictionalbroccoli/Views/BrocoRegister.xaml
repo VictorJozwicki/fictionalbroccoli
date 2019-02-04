@@ -1,9 +1,62 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             Title="{Binding Title}"
-             x:Class="fictionalbroccoli.Views.BrocoRegister">
-    <StackLayout>
-        <Label Text="La broco register page !"/>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="{Binding Title}" x:Class="fictionalbroccoli.Views.BrocoRegister">
+    <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+        <StackLayout Orientation="Horizontal">
+            <Button
+                Text="#Drink"
+                Padding="15, 10, 15, 10"
+                Margin="0,0,0,15"
+                FontSize="20"/> 
+            <Button
+                Text="#Food"
+                Padding="15, 10, 15, 10"
+                Margin="0,0,0,15"
+                FontSize="20"/>
+            <Button
+                Text="#ToSee"
+                Padding="15, 10, 15, 10"
+                Margin="0,0,0,15"
+                FontSize="20"/>
+        </StackLayout>
+        <Label Text="La broco register page !" Style="{StaticResource test}" />
+        
+        <ListView
+            x:Name="ListRegister"
+            ItemsSource="{Binding Registers}"
+            HasUnevenRows="True"
+            SelectionMode="Single">
+
+           <!-- <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" 
+                                      Command="{Binding CommandPizzaDetails}"
+                                      EventArgsParameterPath="Item" />
+            </ListView.Behaviors>-->
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        
+                        <!--<ViewCell.ContextActions>
+                            <MenuItem Command="{Binding BindingContext.CommandDeletePizza, Source={x:Reference ListPizza}}" 
+                                      CommandParameter="{Binding .}" 
+                                      Text="Delete"/>
+                        </ViewCell.ContextActions>-->
+
+                        <StackLayout
+                            BackgroundColor="Beige"
+                            Orientation="Horizontal"
+                            VerticalOptions="FillAndExpand">
+
+                            <Label
+                                Text="{Binding Name}"
+                                TextColor="Green"
+                                FontAttributes="Bold"
+                                FontSize="50"
+                                Margin="20,10,10,5"/>
+                        </StackLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
     </StackLayout>
 </ContentPage>

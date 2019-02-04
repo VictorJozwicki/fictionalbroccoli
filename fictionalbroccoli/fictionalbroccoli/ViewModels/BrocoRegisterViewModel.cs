@@ -14,6 +14,7 @@ namespace fictionalbroccoli.ViewModels
         public BrocoRegisterViewModel(INavigationService navigationService) : base(navigationService)
         {
             Title = "Enregistrements";
+
         }
     }
 }

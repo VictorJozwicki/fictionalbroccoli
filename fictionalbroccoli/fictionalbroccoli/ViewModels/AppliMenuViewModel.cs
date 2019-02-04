@@ -59,8 +59,5 @@ namespace fictionalbroccoli.ViewModels
         {
             _navigationService.NavigateAsync("NavigationPage/BrocoBonus");
         }
-
-
-
     }
 }
