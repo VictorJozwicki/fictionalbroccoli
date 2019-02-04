@@ -16,7 +16,7 @@ namespace fictionalbroccoli.ViewModels
             Title = "Example page";
         }
 
-        private string _name = 'George';
+        private string _name = "George";
 
         public string Name
         {
