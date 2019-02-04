@@ -7,12 +7,15 @@ using Prism.Navigation;
 using Prism.Logging;
 using Prism.Services;
 using fictionalbroccoli.Models;
+using fictionalbroccoli.Services;
 
 namespace fictionalbroccoli.ViewModels
 {
     public class BrocoRegisterDetailViewModel : ViewModelBase, INavigatedAware
     {
         public INavigationService _navigationService;
+        public IRegisterService _registerService;
+        public Registration registration;
 
         private string _name = "";
         public string Name
@@ -28,11 +31,15 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _description, value); }
         }
 
+        public DelegateCommand CommandDelete { get; private set; }
+
         // Functions 
-        public BrocoRegisterDetailViewModel(INavigationService navigationService) : base(navigationService)
+        public BrocoRegisterDetailViewModel(INavigationService navigationService, IRegisterService registerService) : base(navigationService)
         {
             _navigationService = navigationService;
+            _registerService = registerService;
             Title = "Detail";
+            CommandDelete =  new DelegateCommand(HandleDelete);
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
@@ -43,10 +50,15 @@ namespace fictionalbroccoli.ViewModels
         public override void OnNavigatingTo(INavigationParameters parameters)
         {
             base.OnNavigatingTo(parameters);
-
-            Registration registration = parameters.GetValue<Registration>("Registration");
+            registration = parameters.GetValue<Registration>("Registration");
             Name = registration.Name;
             Description = registration.Description;
+        }
+
+        private void HandleDelete()
+        {
+            _registerService.Delete(registration.Id);
+            _navigationService.NavigateAsync("/AppliMenu/NavigationPage/MainPage"); // TODO Doesn't really work
         }
     }
 }
