@@ -13,24 +13,32 @@ namespace fictionalbroccoli.ViewModels
 {
     public class BrocoRegisterViewModel : ViewModelBase
     {
-        //private IRegisterService _registerService;
-        //private List<Registration> _registrations;
-        //public List<Registration> Registrations
-        //{
-        //    get { return _registrations;  }
-        //    set { SetProperty(ref _registrations, value);  }
-        //}
+        private IRegisterService _registerService;
+        public INavigationService _navigationService;
+        public DelegateCommand<Registration> CommandGoDetail { get; private set; }
+        private List<Registration> _registrations;
+        public List<Registration> Registrations
+        {
+            get { return _registrations;  }
+            set { SetProperty(ref _registrations, value);  }
+        }
 
-        public BrocoRegisterViewModel(INavigationService navigationService) : base(navigationService)
+        public BrocoRegisterViewModel(INavigationService navigationService, IRegisterService registerService) : base(navigationService)
         {
             Title = "Enregistrements";
-            Registration temp = new Registration("title", "description");
+            CommandGoDetail = new DelegateCommand<Registration>(HandleDetail);
 
-            //_registerService = RegisterService;
+            _navigationService = navigationService;
+            _registerService = registerService; // Local service
+            _registrations = _registerService.GetAll(); // Gotta catch them all
 
-            //_registerService.Add(temp);
+        }
 
-            //_registrations = _registerService.GetAll();
+        private void HandleDetail(Registration selectedRegistration)
+        {
+            var navigationParam = new NavigationParameters();
+            navigationParam.Add("Registration", selectedRegistration);
+            _navigationService.NavigateAsync("NavigationPage/BrocoRegisterDetail", navigationParam);
         }
     }
 }

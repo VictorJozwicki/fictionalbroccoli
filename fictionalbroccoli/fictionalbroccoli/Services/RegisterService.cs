@@ -11,6 +11,7 @@ namespace fictionalbroccoli.Services
         public RegisterService()
         {
             _registerClient = new RegisterClient();
+            //this.Populate(); 
         }
 
         public Registration Get(int id)
@@ -36,6 +37,16 @@ namespace fictionalbroccoli.Services
         public void Update(Registration registration)
         {
             throw new NotImplementedException();
+        }
+
+        /*
+         * Populate the database with Albert       
+         */       
+        public void Populate()
+        {
+            Registration registration = new Registration("Albert", "The best one");
+
+            this.Add(registration);
         }
     }
 }

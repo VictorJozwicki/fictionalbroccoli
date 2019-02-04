@@ -4,7 +4,7 @@ namespace fictionalbroccoli.Models
     public class Registration
     {
         public int Id {get; set;}
-        public string Title { get; set; }
+        public string Name { get; set; }
         public string Description { get; set; }
 
 
@@ -13,9 +13,9 @@ namespace fictionalbroccoli.Models
 
         }
 
-        public Registration(string title, string description)
+        public Registration(string name, string description)
         {
-            this.Title = title;
+            this.Name = name;
             this.Description = description;
         }
     }

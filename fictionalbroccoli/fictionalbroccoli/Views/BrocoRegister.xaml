@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" Title="{Binding Title}" x:Class="fictionalbroccoli.Views.BrocoRegister">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
+             x:Class="fictionalbroccoli.Views.BrocoRegister"
+             Title="{Binding Title}">
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <StackLayout Orientation="Horizontal">
             <Button
@@ -26,11 +30,11 @@
             HasUnevenRows="True"
             SelectionMode="Single">
 
-           <!-- <ListView.Behaviors>
+           <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemTapped" 
-                                      Command="{Binding CommandPizzaDetails}"
-                                      EventArgsParameterPath="Item" />
-            </ListView.Behaviors>-->
+                                 Command="{Binding CommandGoDetail}"
+                                 EventArgsParameterPath="Item" />
+            </ListView.Behaviors>
 
             <ListView.ItemTemplate>
                 <DataTemplate>
@@ -52,6 +56,12 @@
                                 TextColor="Green"
                                 FontAttributes="Bold"
                                 FontSize="50"
+                                Margin="20,10,10,5"/>
+                            <Label
+                                Text="{Binding Description}"
+                                TextColor="Green"
+                                FontAttributes="Bold"
+                                FontSize="30"
                                 Margin="20,10,10,5"/>
                         </StackLayout>
                     </ViewCell>
