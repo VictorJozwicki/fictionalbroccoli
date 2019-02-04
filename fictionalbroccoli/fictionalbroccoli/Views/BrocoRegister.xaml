@@ -22,7 +22,7 @@
         
         <ListView
             x:Name="ListRegister"
-            ItemsSource="{Binding Registers}"
+            ItemsSource="{Binding Registrations}"
             HasUnevenRows="True"
             SelectionMode="Single">
 
