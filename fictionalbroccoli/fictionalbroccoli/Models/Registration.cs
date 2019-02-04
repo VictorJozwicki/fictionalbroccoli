@@ -10,6 +10,13 @@ namespace fictionalbroccoli.Models
 
         public Registration()
         {
+
+        }
+
+        public Registration(string title, string description)
+        {
+            this.Title = title;
+            this.Description = description;
         }
     }
 }

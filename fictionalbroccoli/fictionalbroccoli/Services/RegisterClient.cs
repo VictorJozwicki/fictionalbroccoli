@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using fictionalbroccoli.Models;
 using LiteDB;
 
@@ -19,8 +21,26 @@ namespace fictionalbroccoli.Services
         {
             using (var db = new LiteDatabase(DbPath))
             {
-                var collection = db.GetCollection<Registration>("Pizza");
+                var collection = db.GetCollection<Registration>("Registrations");
                 return collection.FindById(id);
+            }
+        }
+
+        public List<Registration> GetAll()
+        {
+            using (var db = new LiteDatabase(DbPath))
+            {
+                var collection = db.GetCollection<Registration>("Registrations");
+                return collection.FindAll().ToList();
+            }
+        }
+
+        public void Add(Registration registration)
+        {
+            using (var db = new LiteDatabase(DbPath))
+            {
+                var collection = db.GetCollection<Registration>("Registrations");
+                collection.Insert(registration);
             }
         }
     }
