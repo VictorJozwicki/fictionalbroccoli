@@ -7,9 +7,15 @@
                     >
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <StackLayout>
-                <Button Text="Home" Command="{Binding CommandGoHome}" />  
-                <Button Text="PageExample" Command="{Binding CommandGoExample}" /> 
+            <StackLayout Padding="0,50,0,0">
+                <Button Text="Accueil" Command="{Binding CommandGoHome}" />  
+                <Label Text="Application" FontSize="Large"/>
+                <StackLayout Padding="50, 0, 50, 0">
+                    <Button Text="Map" Command="{Binding CommandGoAppMap}" />
+                    <Button Text="Enregistrements" Command="{Binding CommandGoAppRegister}" />
+                    <Button Text="Nouveau" Command="{Binding CommandGoAppNew}" />
+                </StackLayout>
+                <Button Text="Bonus" Command="{Binding CommandGoBonus}" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

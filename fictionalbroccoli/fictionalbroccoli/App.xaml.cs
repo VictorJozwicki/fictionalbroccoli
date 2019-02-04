@@ -29,8 +29,15 @@ namespace fictionalbroccoli
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
             containerRegistry.RegisterForNavigation<NavigationPage>();
+
+
+            // Pages
             containerRegistry.RegisterForNavigation<MainPage, MainPageViewModel>();
             containerRegistry.RegisterForNavigation<PageExample, PageExampleViewModel>();
+
+            containerRegistry.RegisterForNavigation<Bonus, BonusViewModel>();
+
+            // Menu
             containerRegistry.RegisterForNavigation<AppliMenu, AppliMenuViewModel>();
         }
     }

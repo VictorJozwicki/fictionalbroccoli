@@ -13,23 +13,54 @@ namespace fictionalbroccoli.ViewModels
     public class AppliMenuViewModel : BindableBase
     {
         public INavigationService _navigationService;
-        public DelegateCommand CommandGoExample { get; private set; }
         public DelegateCommand CommandGoHome { get; private set; }
+        public DelegateCommand CommandGoAppMap { get; private set; }
+        public DelegateCommand CommandGoAppRegister { get; private set; }
+        public DelegateCommand CommandGoAppNew { get; private set; }
+        public DelegateCommand CommandGoBonus { get; private set; }
+
         public AppliMenuViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
-            CommandGoExample = new DelegateCommand(HandleAction);
+            // Home
             CommandGoHome = new DelegateCommand(HandleHome);
+            // Application
+            CommandGoAppMap = new DelegateCommand(HandleMap);
+            CommandGoAppRegister = new DelegateCommand(HandleRegister);
+            CommandGoAppNew = new DelegateCommand(HandleNew);
+            // Bonus
+            CommandGoBonus = new DelegateCommand(HandleBonus);
         }
 
-        void HandleAction()
-        {
-            _navigationService.NavigateAsync("NavigationPage/PageExample");
-        }
-
+        // Home
         void HandleHome()
         {
             _navigationService.NavigateAsync("NavigationPage/MainPage");
         }
+
+        // Application
+        void HandleMap()
+        {
+            _navigationService.NavigateAsync("NavigationPage/PageExample");
+        }
+
+        void HandleRegister()
+        {
+            _navigationService.NavigateAsync("NavigationPage/PageExample");
+        }
+
+        void HandleNew()
+        {
+            _navigationService.NavigateAsync("NavigationPage/PageExample");
+        }
+
+        // Bonus
+        void HandleBonus()
+        {
+            _navigationService.NavigateAsync("NavigationPage/Bonus");
+        }
+
+
+
     }
 }
