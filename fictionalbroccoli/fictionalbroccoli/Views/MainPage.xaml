@@ -3,7 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
              x:Class="fictionalbroccoli.Views.MainPage" 
              Title="{Binding Title}">
-    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-        <Label Text="not Welcome to Xamarin Forms and Prism!" />
+    <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Margin="0, 20, 0, 0">
+        <Label Text="Projet developpement mobile" HorizontalOptions="Center" />
+        
+        <Label Text="2018 - 2019" HorizontalOptions="Center" />
+            
+        <Label Text="Groupe JOZWICKI / LETULLIER" HorizontalOptions="Center" />
     </StackLayout>
 </ContentPage>
