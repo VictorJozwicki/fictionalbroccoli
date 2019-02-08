@@ -3,12 +3,68 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
              x:Class="fictionalbroccoli.Views.BrocoRegisterDetail">
-    <StackLayout>
-        <Label Text="Detail de mon enregistriement"/>  
-        <Label Text="{Binding Name}"/> 
-        <Label Text="{Binding Description}"/> 
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            
+            <!--Labels-->
+            <Style x:Key="name" TargetType="Label">
+                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+            </Style>
+            <Style x:Key="tag" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+            <Style x:Key="position" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+            <Style x:Key="address" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="Black"/>
+            </Style>
+            
+            <!--Other-->
+            <Style x:Key="picture" TargetType="Image">
+                
+            </Style>
+            <Style x:Key="mainText" TargetType="StackLayout">
+                <Setter Property="Margin" Value="10, 20" />
+            </Style>
+            <Style x:Key="otherInfos" TargetType="StackLayout">
+                <Setter Property="Margin" Value="0, 20" />
+            </Style>
+            
+            
+        </ResourceDictionary>
+    </Application.Resources>
+    
+    <StackLayout Style="{StaticResource pageMargin}">
         
-        <Button Text="Supprimer" Command="{Binding CommandDelete}" />
-        <Button Text="Modifier" Command="{Binding CommandUpdate}" />
+        <StackLayout Style="{StaticResource picture}" HorizontalOptions="Center">
+            <Image Source="factorio" WidthRequest="300" HeightRequest="150"/>
+            <Label Text="Photo prise à 17h35" HorizontalOptions="End"/>
+        </StackLayout>
+        
+        <StackLayout Style="{StaticResource mainText}">
+            <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
+            <Label Text="{Binding Name}" Style="{StaticResource name}"/> 
+            <Label Text="#tag" Style="{StaticResource tag}"/>
+            </StackLayout>
+            <Label Text="{Binding Description}"/>
+            <StackLayout Style="{StaticResource otherInfos}">
+                <Label Text="49.119308 - 6.175716" Style="{StaticResource position}"/>
+                <Label Text="X rue des coteaux, 57070 St Julien Les Metz" Style="{StaticResource address}"/>
+            </StackLayout>
+        </StackLayout>
+        
+        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+            <ImageButton Source="delete.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandDelete}"/>
+            <ImageButton Source="save.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSave}"/>
+        </StackLayout>
     </StackLayout>
 </ContentPage>

@@ -11,7 +11,7 @@ namespace fictionalbroccoli.Services
         public RegisterService()
         {
             _registerClient = new RegisterClient();
-            //this.Populate(); 
+            this.Populate(); 
         }
 
         public Registration Get(int id)
@@ -44,8 +44,8 @@ namespace fictionalbroccoli.Services
          */       
         public void Populate()
         {
-            Registration registration = new Registration("Albert", "The best one");
-            Registration registration2 = new Registration("Albert2", "The best two");
+            Registration registration = new Registration("Factorio", "Factorio is a game about building and creating automated factories to produce items of increasing complexity, within an infinite 2D world. Use your imagination to design your factory, combine simple elements into ingenious structures, and finally protect it from the creatures who don't really like you.");
+            Registration registration2 = new Registration("Aye sir", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.");
             Registration registration3 = new Registration("Albert3", "The best three");
             this.Add(registration);
             this.Add(registration2);

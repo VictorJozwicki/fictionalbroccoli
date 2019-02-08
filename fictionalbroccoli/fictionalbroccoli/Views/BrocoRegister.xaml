@@ -12,7 +12,7 @@
             </Style>
             <Style x:Key="registerItem" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"/>
-                <Setter Property="Padding" Value="20"/>
+                <Setter Property="Padding" Value="10"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             </Style>
             <Style x:Key="registerItemOutter" TargetType="StackLayout">
@@ -76,8 +76,9 @@
                 <Button Text="#ToSee" Style="{StaticResource button}"/>
             </StackLayout>
             <StackLayout Style="{StaticResource rightButtons}">
-                <ImageButton Source="arrowDown.png" WidthRequest="50" HeightRequest="50"/>
-                <ImageButton Source="arrowUp.png" WidthRequest="50" HeightRequest="50"/>
+                <Label Text="{Binding SortText}" VerticalOptions="Center"/>
+                <ImageButton Source="arrowDown.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortDown}"/>
+                <ImageButton Source="arrowUp.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortUp}"/>
             </StackLayout>
         </StackLayout>
         

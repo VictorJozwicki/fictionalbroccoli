@@ -83,6 +83,11 @@
     <AndroidResource Include="Resources\drawable\greenbox.png" />
     <AndroidResource Include="Resources\drawable\arrowDown.png" />
     <AndroidResource Include="Resources\drawable\arrowUp.png" />
+    <AndroidResource Include="Resources\drawable\arrowDownSelected.png" />
+    <AndroidResource Include="Resources\drawable\arrowUpSelected.png" />
+    <AndroidResource Include="Resources\drawable\save.png" />
+    <AndroidResource Include="Resources\drawable\delete.png" />
+    <AndroidResource Include="Resources\drawable\factorio.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />

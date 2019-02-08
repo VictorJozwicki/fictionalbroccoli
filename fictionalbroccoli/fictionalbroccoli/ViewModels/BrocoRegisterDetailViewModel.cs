@@ -32,14 +32,18 @@ namespace fictionalbroccoli.ViewModels
         }
 
         public DelegateCommand CommandDelete { get; private set; }
+        public DelegateCommand CommandSave { get; private set; }
+
 
         // Functions 
         public BrocoRegisterDetailViewModel(INavigationService navigationService, IRegisterService registerService) : base(navigationService)
         {
             _navigationService = navigationService;
             _registerService = registerService;
-            Title = "Detail";
+            Title = "Enregistrement";
             CommandDelete =  new DelegateCommand(HandleDelete);
+            CommandSave = new DelegateCommand(HandleSave);
+
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
@@ -59,6 +63,12 @@ namespace fictionalbroccoli.ViewModels
         {
             _registerService.Delete(registration.Id);
             _navigationService.NavigateAsync("/AppliMenu/NavigationPage/MainPage"); // TODO Doesn't really work
+        }
+
+        private void HandleSave()
+        {
+            Title = "Saving";
+            // TODO 
         }
     }
 }

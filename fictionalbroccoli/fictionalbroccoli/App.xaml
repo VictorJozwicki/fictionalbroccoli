@@ -5,10 +5,8 @@
                         x:Class="fictionalbroccoli.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Style x:Key="test" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center" />
-                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
-                <Setter Property="TextColor" Value="Teal" />
+            <Style x:Key="pageMargin" TargetType="StackLayout">
+                <Setter Property="Margin" Value="20" />
             </Style>
             
             <Style x:Key="labelOne" TargetType="Label">
