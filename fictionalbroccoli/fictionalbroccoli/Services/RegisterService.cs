@@ -11,7 +11,7 @@ namespace fictionalbroccoli.Services
         public RegisterService()
         {
             _registerClient = new RegisterClient();
-            this.Populate(); 
+            //this.Populate(); 
         }
 
         public Registration Get(int id)

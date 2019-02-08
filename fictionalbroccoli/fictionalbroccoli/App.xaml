@@ -16,6 +16,19 @@
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="TextColor" Value="Teal" />
             </Style>
+            
+            <!--Navigation-->
+            <Style x:Key="navigation" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="TextColor" Value="Teal"/>
+            </Style>
+            
+            <!--Button style-->
+            <Style x:Key="button" TargetType="Button">
+                <Setter Property="CornerRadius" Value="40"/>
+            </Style>
+            
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

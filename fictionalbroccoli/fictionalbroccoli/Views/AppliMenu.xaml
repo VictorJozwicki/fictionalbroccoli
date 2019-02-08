@@ -5,17 +5,35 @@
                     prism:ViewModelLocator.AutowireViewModel="True"
                     x:Class="fictionalbroccoli.Views.AppliMenu"
                     >
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="menu" TargetType="StackLayout">
+                <Setter Property="Padding" Value="0,150,0,0"/>
+            </Style>
+            <Style x:Key="subMenu" TargetType="StackLayout">
+                <Setter Property="Padding" Value="50, 0, 50, 0"/>
+            </Style>
+            <Style x:Key="subMenuLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="Large"/>
+                <Setter Property="Margin" Value="20, 0"/>
+            </Style>
+            <Style x:Key="menuButton" TargetType="Button">
+                <Setter Property="Margin" Value="20, 0"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+    
     <MasterDetailPage.Master>
         <ContentPage Title="Menu">
-            <StackLayout Padding="0,50,0,0">
-                <Button Text="Accueil" Command="{Binding CommandGoHome}" />  
-                <Label Text="Application" FontSize="Large"/>
-                <StackLayout Padding="50, 0, 50, 0">
-                    <Button Text="Map" Command="{Binding CommandGoAppMap}" />
-                    <Button Text="Enregistrements" Command="{Binding CommandGoAppRegister}" />
-                    <Button Text="Nouveau" Command="{Binding CommandGoAppNew}" />
+            <StackLayout Style="{StaticResource menu}">
+                <Button Text="Accueil" Command="{Binding CommandGoHome}" Style="{StaticResource menuButton}"/>  
+                <Label Text="Application" Style="{StaticResource subMenuLabel}"/>
+                <StackLayout Style="{StaticResource subMenu}" Padding="">
+                    <Button Text="Map" Command="{Binding CommandGoAppMap}" Style="{StaticResource menuButton}"/>
+                    <Button Text="Enregistrements" Command="{Binding CommandGoAppRegister}" Style="{StaticResource menuButton}"/>
+                    <Button Text="Nouveau" Command="{Binding CommandGoAppNew}" Style="{StaticResource menuButton}"/>
                 </StackLayout>
-                <Button Text="Bonus" Command="{Binding CommandGoBonus}" />
+                <Button Text="Bonus" Command="{Binding CommandGoBonus}" Style="{StaticResource menuButton}"/>
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

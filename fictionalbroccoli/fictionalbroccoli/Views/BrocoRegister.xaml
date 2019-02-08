@@ -1,68 +1,108 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-             xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms"
-             x:Class="fictionalbroccoli.Views.BrocoRegister"
-             Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:b="clr-namespace:Prism.Behaviors;assembly=Prism.Forms" xmlns:controls="clr-namespace:ImageCircle.Forms.Plugin.Abstractions;assembly=ImageCircle.Forms.Plugin" x:Class="fictionalbroccoli.Views.BrocoRegister" Title="{Binding Title}">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Register Page-->
+            <Style x:Key="registerItemFrame" TargetType="Frame">
+                <Setter Property="BackgroundColor" Value="Beige"/>
+                <Setter Property="BorderColor" Value="Black"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/> <!--Because it needs to take the whole width-->
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="Margin" Value="50, 0"/>
+            </Style>
+            <Style x:Key="registerItem" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="Padding" Value="20"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+            </Style>
+            <Style x:Key="registerItemOutter" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="Margin" Value="0, 20"/>
+                <Setter Property="VerticalOptions" Value="FillAndExpand"/>
+            </Style>
+            
+            <!--Upper part-->
+            <Style x:Key="upperButtons" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="50, 40, 50, 0"/>
+            </Style>
+            <Style x:Key="leftButtons" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
+            </Style>
+            <Style x:Key="rightButtons" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+            </Style>
+            
+            
+            <!--Picture-->
+            <Style x:Key="registerItemPicture" TargetType="Image">
+                <Setter Property="WidthRequest" Value="20"/>
+            </Style>
+            
+            <!--Name and tag-->
+            <Style x:Key="registerItemNameTag" TargetType="Image">
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="Margin" Value="20, 0, 0, 0"/>
+                
+            </Style>
+            <Style x:Key="registerItemName" TargetType="Label">
+                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="30" />
+            </Style>
+            <Style x:Key="registerItemTag" TargetType="Label">
+                <Setter Property="TextColor" Value="Gray"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="0, 10"/>
+            </Style>
+            
+            <!--Right side date-->
+            <Style x:Key="registerItemDateText" TargetType="Label">
+                <Setter Property="TextColor" Value="Teal"/>
+                <Setter Property="FontSize" Value="30"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+    
+    
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
-        <StackLayout Orientation="Horizontal">
-            <Button
-                Text="#Drink"
-                Padding="15, 10, 15, 10"
-                Margin="0,0,0,15"
-                FontSize="20"/> 
-            <Button
-                Text="#Food"
-                Padding="15, 10, 15, 10"
-                Margin="0,0,0,15"
-                FontSize="20"/>
-            <Button
-                Text="#ToSee"
-                Padding="15, 10, 15, 10"
-                Margin="0,0,0,15"
-                FontSize="20"/>
+        <!--Upper elements-->
+        <StackLayout Style="{StaticResource upperButtons}">
+            <StackLayout Style="{StaticResource leftButtons}">
+                <Button Text="#drink" Style="{StaticResource button}"/>
+                <Button Text="#Food" Style="{StaticResource button}"/>
+                <Button Text="#ToSee" Style="{StaticResource button}"/>
+            </StackLayout>
+            <StackLayout Style="{StaticResource rightButtons}">
+                <ImageButton Source="arrowDown.png" WidthRequest="50" HeightRequest="50"/>
+                <ImageButton Source="arrowUp.png" WidthRequest="50" HeightRequest="50"/>
+            </StackLayout>
         </StackLayout>
-        <Label Text="La broco register page !" Style="{StaticResource test}" />
         
-        <ListView
-            x:Name="ListRegister"
-            ItemsSource="{Binding Registrations}"
-            HasUnevenRows="True"
-            SelectionMode="Single">
-
-           <ListView.Behaviors>
-                <b:EventToCommandBehavior EventName="ItemTapped" 
-                                 Command="{Binding CommandGoDetail}"
-                                 EventArgsParameterPath="Item" />
+        <!--List-->
+        <ListView x:Name="ListRegister" ItemsSource="{Binding Registrations}" HasUnevenRows="True" SelectionMode="Single">
+            <ListView.Behaviors>
+                <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding CommandGoDetail}" EventArgsParameterPath="Item" />
             </ListView.Behaviors>
-
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        
-                        <!--<ViewCell.ContextActions>
-                            <MenuItem Command="{Binding BindingContext.CommandDeletePizza, Source={x:Reference ListPizza}}" 
-                                      CommandParameter="{Binding .}" 
-                                      Text="Delete"/>
-                        </ViewCell.ContextActions>-->
-
-                        <StackLayout
-                            BackgroundColor="Beige"
-                            Orientation="Horizontal"
-                            VerticalOptions="FillAndExpand">
-
-                            <Label
-                                Text="{Binding Name}"
-                                TextColor="Green"
-                                FontAttributes="Bold"
-                                FontSize="50"
-                                Margin="20,10,10,5"/>
-                            <Label
-                                Text="{Binding Description}"
-                                TextColor="Green"
-                                FontAttributes="Bold"
-                                FontSize="30"
-                                Margin="20,10,10,5"/>
+                        <StackLayout Style="{StaticResource registerItemOutter}">
+                            <Frame Style="{StaticResource registerItemFrame}">
+                                <StackLayout Style="{StaticResource registerItem}" >
+                                    <controls:CircleImage Source="greenbox.png" Aspect="AspectFill" WidthRequest="70" HeightRequest="70">
+                                    </controls:CircleImage>
+                                    <!--Name and tag-->
+                                    <StackLayout Style="{StaticResource registerItemNameTag}" >
+                                        <Label Text="{Binding Name}" Style="{StaticResource registerItemName}"/>
+                                        <Label Text="#Tag" Style="{StaticResource registerItemTag}"/>
+                                    </StackLayout>
+                                    <!--The date text on the right-->
+                                    <Label Text="DateText" Style="{StaticResource registerItemDateText}" HorizontalOptions="End"/>
+                                </StackLayout>
+                            </Frame>
                         </StackLayout>
                     </ViewCell>
                 </DataTemplate>
