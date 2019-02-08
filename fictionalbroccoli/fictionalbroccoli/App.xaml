@@ -29,6 +29,10 @@
                 <Setter Property="CornerRadius" Value="40"/>
             </Style>
             
+            
+            <!--Colors-->
+            <Color x:Key="whiteGray">#333333</Color>
+            <Color x:Key="whiteLessGray">#666666</Color>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>

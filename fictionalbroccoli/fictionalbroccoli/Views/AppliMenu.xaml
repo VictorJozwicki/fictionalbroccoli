@@ -11,24 +11,26 @@
                 <Setter Property="Padding" Value="0,150,0,0"/>
             </Style>
             <Style x:Key="subMenu" TargetType="StackLayout">
-                <Setter Property="Padding" Value="50, 0, 50, 0"/>
+                <Setter Property="Padding" Value="50, 0, 50, 20"/>
             </Style>
             <Style x:Key="subMenuLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="Margin" Value="20, 0"/>
+                <Setter Property="Margin" Value="20, 20, 20, 0"/>
+                <Setter Property="TextColor" Value="Black"/>
             </Style>
             <Style x:Key="menuButton" TargetType="Button">
                 <Setter Property="Margin" Value="20, 0"/>
+                <Setter Property="CornerRadius" Value="40"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
     
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu">
+        <ContentPage Title="Menu" BackgroundColor="#CCCCCC">
             <StackLayout Style="{StaticResource menu}">
                 <Button Text="Accueil" Command="{Binding CommandGoHome}" Style="{StaticResource menuButton}"/>  
                 <Label Text="Application" Style="{StaticResource subMenuLabel}"/>
-                <StackLayout Style="{StaticResource subMenu}" Padding="">
+                <StackLayout Style="{StaticResource subMenu}">
                     <Button Text="Map" Command="{Binding CommandGoAppMap}" Style="{StaticResource menuButton}"/>
                     <Button Text="Enregistrements" Command="{Binding CommandGoAppRegister}" Style="{StaticResource menuButton}"/>
                     <Button Text="Nouveau" Command="{Binding CommandGoAppNew}" Style="{StaticResource menuButton}"/>
