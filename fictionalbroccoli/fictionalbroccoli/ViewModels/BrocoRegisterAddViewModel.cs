@@ -40,7 +40,7 @@ namespace fictionalbroccoli.ViewModels
         private void HandleAdd()
         {
             _registerService.Add(Registration);
-            _navigationService.NavigateAsync("AppliMenu/NavigationPage/BrocoRegister"); // TODO Fix that
+            _navigationService.NavigateAsync("/AppliMenu/NavigationPage/BrocoRegister");
         }
     }
 }
