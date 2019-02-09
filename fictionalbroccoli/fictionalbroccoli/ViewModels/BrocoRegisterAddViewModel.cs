@@ -27,7 +27,7 @@ namespace fictionalbroccoli.ViewModels
 
         public BrocoRegisterAddViewModel(INavigationService navigationService, IRegisterService registerService) : base(navigationService)
         {
-            Title = "Add new";
+            Title = "Nouveau";
 
             _registerService = registerService;
             _navigationService = navigationService;

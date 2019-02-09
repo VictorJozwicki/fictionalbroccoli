@@ -67,7 +67,7 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleDelete()
         {
-            _dialogService.ShowMessage("Attention", "Êtes-vous sûr de vouoir supprimer ?", (res) =>
+            _dialogService.ShowMessage("Attention", "Êtes-vous sûr de vouloir supprimer ?", (res) =>
             {
                 if (res)
                 {

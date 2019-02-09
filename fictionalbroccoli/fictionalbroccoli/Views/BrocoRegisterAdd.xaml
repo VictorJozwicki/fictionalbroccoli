@@ -3,11 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
              x:Class="fictionalbroccoli.Views.BrocoRegisterAdd">
-             
+    <Application.Resources>
+        <ResourceDictionary>
+             <Style x:Key="imageHolder" TargetType="StackLayout">
+                <Setter Property="Padding" Value="150"/>
+                <Setter Property="BackgroundColor" Value="Silver"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+            </Style>
+            <Style x:Key="inputStack" TargetType="StackLayout">
+                <Setter Property="Margin" Value="30, 40, 250, 20"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
     <StackLayout>
-        <Entry Text="{Binding Registration.Name}"></Entry>
-        <Entry Text="{Binding Registration.Description}"></Entry>
-        
-        <Button Text="Ajouter" Style="{StaticResource button}" Command="{Binding CommandAdd}"/>
+        <StackLayout Style="{StaticResource imageHolder}">
+            <Label Text="TAKE PICTURE" FontSize="Large"/> <!--Obivously change to the image picker-->
+        </StackLayout>
+        <StackLayout Style="{StaticResource inputStack}">
+            <Entry Text="{Binding Registration.Name}" Placeholder="Name"/>
+            <Entry Text="{Binding Registration.Description}" Placeholder="Description" />
+            <Label Text="Tag" Margin="0, 20, 0, 0"/>
+            <Picker>
+                <Picker.Items>
+                    <x:String>Beer</x:String> 
+                    <x:String>Factorio</x:String>
+                </Picker.Items>
+            </Picker>
+        </StackLayout>
+        <ImageButton Source="save.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandAdd}" HorizontalOptions="End" Margin="0, 0, 200, 0"/>
     </StackLayout>
 </ContentPage>
