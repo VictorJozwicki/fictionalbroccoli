@@ -40,6 +40,8 @@ namespace fictionalbroccoli
             containerRegistry.RegisterForNavigation<BrocoRegisterDetail, BrocoRegisterDetailViewModel>();
             containerRegistry.RegisterForNavigation<BrocoNew, BrocoNewViewModel>();
             containerRegistry.RegisterForNavigation<BrocoBonus, BrocoBonusViewModel>();
+            containerRegistry.RegisterForNavigation<BrocoRegisterAdd, BrocoRegisterAddViewModel>();
+            containerRegistry.RegisterForNavigation<BrocoRegisterEdit, BrocoRegisterEditViewModel>();
 
             // Menu
             containerRegistry.RegisterForNavigation<AppliMenu, AppliMenuViewModel>();

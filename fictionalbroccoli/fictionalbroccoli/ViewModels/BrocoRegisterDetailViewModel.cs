@@ -67,8 +67,9 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleSave()
         {
-            Title = "Saving";
-            // TODO 
+            var navigationParam = new NavigationParameters();
+            navigationParam.Add("Registration", registration);
+            _navigationService.NavigateAsync("BrocoRegisterEdit", navigationParam);
         }
     }
 }

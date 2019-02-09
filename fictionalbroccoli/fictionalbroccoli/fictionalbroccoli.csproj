@@ -19,4 +19,10 @@
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Remove="BrocoRegisterAdd.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="BrocoRegisterAdd.xaml.cs" />
+  </ItemGroup>
 </Project>
