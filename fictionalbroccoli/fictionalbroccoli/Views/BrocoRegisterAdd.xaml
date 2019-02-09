@@ -5,6 +5,9 @@
              x:Class="fictionalbroccoli.Views.BrocoRegisterAdd">
              
     <StackLayout>
-        <Entry Text="Name"></Entry>
+        <Entry Text="{Binding Registration.Name}"></Entry>
+        <Entry Text="{Binding Registration.Description}"></Entry>
+        
+        <Button Text="Ajouter" Style="{StaticResource button}" Command="{Binding CommandAdd}"/>
     </StackLayout>
 </ContentPage>

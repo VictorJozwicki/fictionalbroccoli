@@ -42,7 +42,6 @@ namespace fictionalbroccoli.ViewModels
         private void HandleSave()
         {
             _registerService.Update(Registration);
-            Title = "Changed";
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Registration", Registration);
             _navigationService.GoBackAsync(navigationParam);
