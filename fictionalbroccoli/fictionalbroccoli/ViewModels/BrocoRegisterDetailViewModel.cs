@@ -8,6 +8,7 @@ using Prism.Logging;
 using Prism.Services;
 using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
+using Xamarin.Forms;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -15,6 +16,7 @@ namespace fictionalbroccoli.ViewModels
     {
         public INavigationService _navigationService;
         public IRegisterService _registerService;
+        public IDialogService _dialogService;
         public Registration registration;
 
         private string _name = "";
@@ -36,10 +38,14 @@ namespace fictionalbroccoli.ViewModels
 
 
         // Functions 
-        public BrocoRegisterDetailViewModel(INavigationService navigationService, IRegisterService registerService) : base(navigationService)
+        public BrocoRegisterDetailViewModel(
+            INavigationService navigationService,
+            IRegisterService registerService,
+            IDialogService dialogService) : base(navigationService)
         {
             _navigationService = navigationService;
             _registerService = registerService;
+            _dialogService = dialogService;
             Title = "Enregistrement";
             CommandDelete =  new DelegateCommand(HandleDelete);
             CommandSave = new DelegateCommand(HandleSave);
@@ -61,8 +67,15 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleDelete()
         {
-            _registerService.Delete(registration.Id);
-            _navigationService.GoBackAsync();
+            _dialogService.ShowMessage("Attention", "Êtes-vous sûr de vouoir supprimer ?", (res) =>
+            {
+                if (res)
+                {
+                    _registerService.Delete(registration.Id);
+                    _navigationService.GoBackAsync();
+                }
+            });
+
         }
 
         private void HandleSave()

@@ -47,6 +47,7 @@ namespace fictionalbroccoli
             containerRegistry.RegisterForNavigation<AppliMenu, AppliMenuViewModel>();
 
             // Services
+            containerRegistry.RegisterSingleton<IDialogService, DialogService>();
             containerRegistry.RegisterSingleton<IRegisterService, RegisterService>();
         }
     }
