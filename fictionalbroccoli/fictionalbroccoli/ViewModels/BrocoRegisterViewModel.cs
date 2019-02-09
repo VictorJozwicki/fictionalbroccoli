@@ -51,7 +51,7 @@ namespace fictionalbroccoli.ViewModels
         {
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Registration", selectedRegistration);
-            _navigationService.NavigateAsync("NavigationPage/BrocoRegisterDetail", navigationParam);
+            _navigationService.NavigateAsync("BrocoRegisterDetail", navigationParam);
         }
 
         private void HandleSortUp(Registration obj)
