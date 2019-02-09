@@ -52,5 +52,14 @@ namespace fictionalbroccoli.Services
                 collection.Delete(id);
             }
         }
+
+        public void Update(Registration registration)
+        {
+            using (var db = new LiteDatabase(DbPath))
+            {
+                var collection = db.GetCollection<Registration>("Registrations");
+                collection.Update(registration);
+            }
+        }
     }
 }

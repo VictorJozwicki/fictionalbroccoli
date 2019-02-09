@@ -51,7 +51,7 @@ namespace fictionalbroccoli.ViewModels
 
         void HandleNew()
         {
-            _navigationService.NavigateAsync("NavigationPage/BrocoNew");
+            _navigationService.NavigateAsync("NavigationPage/BrocoRegisterAdd");
         }
 
         // Bonus

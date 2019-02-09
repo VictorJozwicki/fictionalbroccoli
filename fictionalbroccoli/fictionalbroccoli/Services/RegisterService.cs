@@ -36,7 +36,7 @@ namespace fictionalbroccoli.Services
 
         public void Update(Registration registration)
         {
-            throw new NotImplementedException();
+            _registerClient.Update(registration);
         }
 
         /*

@@ -65,10 +65,9 @@ namespace fictionalbroccoli.ViewModels
         {
             SortText = "Sorting down";
             // Change the image to arrowDownSelected
-
         }
 
-        public override void OnNavigatingTo(INavigationParameters parameters)
+        public override void OnNavigatedTo(INavigationParameters parameters)
         {
             Registrations = _registerService.GetAll(); // Gotta catch them all
         }
