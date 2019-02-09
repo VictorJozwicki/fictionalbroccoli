@@ -62,7 +62,7 @@ namespace fictionalbroccoli.ViewModels
         private void HandleDelete()
         {
             _registerService.Delete(registration.Id);
-            _navigationService.NavigateAsync("/AppliMenu/NavigationPage/MainPage"); // TODO Doesn't really work
+            _navigationService.GoBackAsync();
         }
 
         private void HandleSave()

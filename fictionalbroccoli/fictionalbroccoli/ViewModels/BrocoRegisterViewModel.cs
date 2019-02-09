@@ -43,7 +43,7 @@ namespace fictionalbroccoli.ViewModels
 
             _navigationService = navigationService;
             _registerService = registerService; // Local service
-            _registrations = _registerService.GetAll(); // Gotta catch them all
+            Registrations = _registerService.GetAll(); // Gotta catch them all
 
         }
 
@@ -66,6 +66,11 @@ namespace fictionalbroccoli.ViewModels
             SortText = "Sorting down";
             // Change the image to arrowDownSelected
 
+        }
+
+        public override void OnNavigatingTo(INavigationParameters parameters)
+        {
+            Registrations = _registerService.GetAll(); // Gotta catch them all
         }
     }
 }
