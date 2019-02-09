@@ -1,0 +1,472 @@
+{
+  "protocol_version" : "0.0.1",
+  "configuration" : {
+    "version" : "5.16.0.221 (2018-06/b63e5378e38 Mon Nov 19 18:08:09 EST 2018)",
+    "tlc" : "normal",
+    "sigsgev" : "altstack",
+    "notifications" : "kqueue",
+    "architecture" : "amd64",
+    "disabled_features" : "none",
+    "smallconfig" : "disabled",
+    "bigarrays" : "disabled",
+    "softdebug" : "enabled",
+    "interpreter" : "enabled",
+    "llvm_support" : "3.6.0svn-mono-release_60/0b3cb8ac12c"
+  },
+  "memory" : {
+    "Resident Size" : "51240960",
+    "Virtual Size" : "4574695424",
+    "minor_gc_time" : "0",
+    "major_gc_time" : "0",
+    "minor_gc_count" : "1",
+    "major_gc_count" : "0",
+    "major_gc_time_concurrent" : "0"
+  },
+  "threads" : [
+    {
+      "is_managed" : false,
+      "managed_thread_ptr" : "0x0",
+      "thread_info_addr" : "0x0",
+      "thread_name" : "Finalizer",
+      "native_thread_id" : "0xf8c9000",
+      "ctx" : {
+        "IP" : "0x7fff77286246",
+        "SP" : "0x70000f8c8d88",
+        "BP" : "0x70000f8c8e30"
+      },
+      "unmanaged_frames" : [
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "native_address" : "unregistered"
+        }
+      ]
+    },
+    {
+      "is_managed" : false,
+      "managed_thread_ptr" : "0x0",
+      "thread_info_addr" : "0x0",
+      "thread_name" : "tid_3303",
+      "native_thread_id" : "0x105e1000",
+      "ctx" : {
+        "IP" : "0x7fff7728fb66",
+        "SP" : "0x7000105dd708",
+        "BP" : "0x7000105dd740"
+      },
+      "managed_frames" : [
+        {
+          "native_address" : "unregistered"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x00000",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00000"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x00000",
+          "native_offset" : "0x0",
+          "il_offset" : "0xffffffff"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "23340A11-BB41-423A-A895-298BF881ED68",
+          "token" : "0x6000e26",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00060"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "23340A11-BB41-423A-A895-298BF881ED68",
+          "token" : "0x6000e1f",
+          "native_offset" : "0x0",
+          "il_offset" : "0x000de"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "23340A11-BB41-423A-A895-298BF881ED68",
+          "token" : "0x6000cc1",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00084"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "23340A11-BB41-423A-A895-298BF881ED68",
+          "token" : "0x6000c8a",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0001a"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60002c3",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0003a"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600030d",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00040"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600030b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0011c"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60002e6",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00024"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60002c5",
+          "native_offset" : "0x0",
+          "il_offset" : "0x000f3"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600045a",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00079"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x6000459",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00008"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x6000448",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00042"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043d",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0002e"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0012e"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600044f",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00040"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00209"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600044f",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00040"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00209"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600044f",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00040"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00209"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600044f",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00040"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00209"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600044f",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00040"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x002cc"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600043a",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00103"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x6000433",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0002d"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60001d0",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0005e"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60001ce",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0001d"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60001cd",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00000"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60001ad",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00007"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x60001d1",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00126"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600014b",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0003e"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x600014a",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00000"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x6000149",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00000"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "7B80049B-A212-460D-A3A7-8BDFCC799EF4",
+          "token" : "0x6000148",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00000"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "BBE04950-9EE3-4E44-AD7F-A304EA0BE292",
+          "token" : "0x600009f",
+          "native_offset" : "0x0",
+          "il_offset" : "0x000e4"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "BBE04950-9EE3-4E44-AD7F-A304EA0BE292",
+          "token" : "0x600009e",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0002f"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "BBE04950-9EE3-4E44-AD7F-A304EA0BE292",
+          "token" : "0x6000178",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00048"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "BBE04950-9EE3-4E44-AD7F-A304EA0BE292",
+          "token" : "0x6000085",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0001c"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x6003302",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00014"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x6003296",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00071"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x6003295",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00000"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x6003294",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0002b"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x6003304",
+          "native_offset" : "0x0",
+          "il_offset" : "0x00008"
+        },
+        {
+          "is_managed" : "true",
+          "guid" : "98FAC219-BD4E-4536-93D7-6FDA7BD96AB0",
+          "token" : "0x00000",
+          "native_offset" : "0x0",
+          "il_offset" : "0x0004d"
+        }
+      ],
+    "unmanaged_frames" : [
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      },
+      {
+        "native_address" : "unregistered"
+      }
+    ]
+  }
+]}
