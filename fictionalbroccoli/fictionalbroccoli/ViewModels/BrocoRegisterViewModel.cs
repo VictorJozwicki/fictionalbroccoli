@@ -19,7 +19,7 @@ namespace fictionalbroccoli.ViewModels
         public DelegateCommand<Registration> CommandSortUp { get; private set; }
         public DelegateCommand<Registration> CommandSortDown { get; private set; }
         private List<Registration> _registrations;
-        private string _sortText = "Sorting ?";
+        private string _arrowUp = "arrowUp", _arrowDown = "arrowDown";
 
         public List<Registration> Registrations
         {
@@ -27,10 +27,16 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _registrations, value);  }
         }
 
-        public string SortText
+        public string ArrowUp
         {
-            get { return _sortText; }
-            set { SetProperty(ref _sortText, value);  }
+            get { return _arrowUp; }
+            set { SetProperty(ref _arrowUp, value); }
+        }
+
+        public string ArrowDown
+        {
+            get { return _arrowDown; }
+            set { SetProperty(ref _arrowDown, value); }
         }
 
         public BrocoRegisterViewModel(INavigationService navigationService, IRegisterService registerService) : base(navigationService)
@@ -56,15 +62,17 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleSortUp(Registration obj)
         {
-            SortText = "Sorting up";
-            // Change the image to arrowUpSelected
+            ArrowUp = "arrowUpSelected";
+            ArrowDown = "arrowDown";
+            // TODO Sort up
 
         }
 
         private void HandleSortDown(Registration obj)
         {
-            SortText = "Sorting down";
-            // Change the image to arrowDownSelected
+            ArrowUp = "arrowUp";
+            ArrowDown = "arrowDownSelected";
+            // TODO Sort down
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)

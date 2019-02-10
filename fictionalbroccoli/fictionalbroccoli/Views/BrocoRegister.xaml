@@ -83,9 +83,8 @@
                 <Button Text="#ToSee" Style="{StaticResource tagButton}"/>
             </StackLayout>
             <StackLayout Style="{StaticResource rightButtons}">
-                <Label Text="{Binding SortText}" VerticalOptions="Center"/>
-                <ImageButton Source="arrowDown.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortDown}" Style="{StaticResource arrowButton}"/>
-                <ImageButton Source="arrowUp.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortUp}" Style="{StaticResource arrowButton}"/>
+                <ImageButton Source="{Binding ArrowDown}" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortDown}" Style="{StaticResource arrowButton}"/>
+                <ImageButton Source="{Binding ArrowUp}" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortUp}" Style="{StaticResource arrowButton}"/>
             </StackLayout>
         </StackLayout>
         

@@ -7,35 +7,88 @@
                     >
     <Application.Resources>
         <ResourceDictionary>
+            <!-- Menu -->
             <Style x:Key="menu" TargetType="StackLayout">
-                <Setter Property="Padding" Value="0,150,0,0"/>
+                
             </Style>
             <Style x:Key="subMenu" TargetType="StackLayout">
-                <Setter Property="Padding" Value="50, 0, 50, 20"/>
+                <Setter Property="Padding" Value="40, 0"/>
             </Style>
             <Style x:Key="subMenuLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="Margin" Value="20, 20, 20, 0"/>
-                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="10, 0, 0, 0"/>
+                <Setter Property="TextColor" Value="#333333"/>
             </Style>
-            <Style x:Key="menuButton" TargetType="Button">
+            <!--Buttons-->
+            <Style x:Key="menuButton" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Padding" Value="10, 0"/>
+                
+            </Style>
+            <Style x:Key="menuButtonLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="TextColor" Value="#333333"/>
                 <Setter Property="Margin" Value="20, 0"/>
-                <Setter Property="CornerRadius" Value="40"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
     
     <MasterDetailPage.Master>
-        <ContentPage Title="Menu" BackgroundColor="#CCCCCC">
+        <ContentPage Title="Menu">
             <StackLayout Style="{StaticResource menu}">
-                <Button Text="Accueil" Command="{Binding CommandGoHome}" Style="{StaticResource menuButton}"/>  
-                <Label Text="Application" Style="{StaticResource subMenuLabel}"/>
-                <StackLayout Style="{StaticResource subMenu}">
-                    <Button Text="Map" Command="{Binding CommandGoAppMap}" Style="{StaticResource menuButton}"/>
-                    <Button Text="Enregistrements" Command="{Binding CommandGoAppRegister}" Style="{StaticResource menuButton}"/>
-                    <Button Text="Nouveau" Command="{Binding CommandGoAppNew}" Style="{StaticResource menuButton}"/>
+                <Image Source="factorio"/>
+                
+                <StackLayout Style="{StaticResource menuButton}" BackgroundColor="{Binding HomeBckColor}">
+                    <Image Source="home.png" WidthRequest="25" HeightRequest="25"/>
+                    <Label Text="Accueil" Style="{StaticResource menuButtonLabel}"/>
+                    <StackLayout.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding CommandGoHome}"/>
+                    </StackLayout.GestureRecognizers>
                 </StackLayout>
-                <Button Text="Bonus" Command="{Binding CommandGoBonus}" Style="{StaticResource menuButton}"/>
+                <!--Sub Menu-->
+                <StackLayout>
+                    <BoxView  BackgroundColor="Silver" HeightRequest="0.5" VerticalOptions="End" HorizontalOptions="FillAndExpand" />
+                    <!--<Label Text="Application" Style="{StaticResource subMenuLabel}"/> is here only if it is 100% necessary-->
+                    <!--Map-->
+                    <StackLayout Style="{StaticResource menuButton}" BackgroundColor="{Binding MapBckColor}">
+                        <Image Source="map.png" WidthRequest="25" HeightRequest="25" />
+                        <Label Text="Map" Style="{StaticResource menuButtonLabel}"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CommandGoAppMap}"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <!--Enregistrement-->
+                    <StackLayout Style="{StaticResource menuButton}" BackgroundColor="{Binding RegisterBckColor}">
+                        <Image Source="list.png" WidthRequest="25" HeightRequest="25" />
+                        <Label Text="Enregistrements" Style="{StaticResource menuButtonLabel}"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CommandGoAppRegister}"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <!--Nouveau-->
+                    <StackLayout Style="{StaticResource menuButton}" BackgroundColor="{Binding AddBckColor}">
+                        <Image Source="add.png" WidthRequest="25" HeightRequest="25" />
+                        <Label Text="Nouveau" Style="{StaticResource menuButtonLabel}"/>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding CommandGoAppNew}"/>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <BoxView  BackgroundColor="Silver" HeightRequest="0.5" VerticalOptions="Start" HorizontalOptions="FillAndExpand" />
+                </StackLayout>
+                <!--Bonus-->
+                <StackLayout Style="{StaticResource menuButton}" BackgroundColor="{Binding BonusBckColor}">
+                            <Image Source="bonusTeslaX.png" WidthRequest="25" HeightRequest="25" />
+                            <Label Text="Bonus" Style="{StaticResource menuButtonLabel}"/>
+                            <StackLayout.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CommandGoBonus}"/>
+                            </StackLayout.GestureRecognizers>
+                </StackLayout>
+                
+                <Label Text="{Binding Test}" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

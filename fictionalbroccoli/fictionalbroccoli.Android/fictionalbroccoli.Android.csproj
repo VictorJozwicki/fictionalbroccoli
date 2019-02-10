@@ -92,6 +92,12 @@
     <AndroidResource Include="Resources\drawable\delete.png" />
     <AndroidResource Include="Resources\drawable\factorio.jpg" />
     <AndroidResource Include="Resources\xml\file_paths.xml" />
+    <AndroidResource Include="Resources\drawable\add.png" />
+    <AndroidResource Include="Resources\drawable\add2.png" />
+    <AndroidResource Include="Resources\drawable\bonusTeslaX.png" />
+    <AndroidResource Include="Resources\drawable\home.png" />
+    <AndroidResource Include="Resources\drawable\list.png" />
+    <AndroidResource Include="Resources\drawable\map.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
