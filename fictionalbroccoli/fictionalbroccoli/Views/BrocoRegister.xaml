@@ -4,20 +4,20 @@
         <ResourceDictionary>
             <!--Register Page-->
             <Style x:Key="registerItemFrame" TargetType="Frame">
-                <Setter Property="BackgroundColor" Value="Beige"/>
-                <Setter Property="BorderColor" Value="Black"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/> <!--Because it needs to take the whole width-->
-                <Setter Property="CornerRadius" Value="50"/>
-                <Setter Property="Margin" Value="50, 0"/>
+                <Setter Property="Margin" Value="20, 10"/>
+                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BackgroundColor" Value="{StaticResource darkerWhite}"/>
+                
             </Style>
             <Style x:Key="registerItem" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"/>
-                <Setter Property="Padding" Value="10"/>
+<!--                <Setter Property="Padding" Value="10"/>-->
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             </Style>
             <Style x:Key="registerItemOutter" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"/>
-                <Setter Property="Margin" Value="0, 20"/>
+<!--                <Setter Property="Margin" Value="0, 10"/>-->
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
             
@@ -35,7 +35,15 @@
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="HorizontalOptions" Value="End"/>
             </Style>
-            
+            <Style x:Key="arrowButton" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+            </Style>
+            <Style x:Key="tagButton" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="BorderColor" Value="Black"/> 
+                <Setter Property="BorderWidth" Value="2"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style>
             
             <!--Picture-->
             <Style x:Key="registerItemPicture" TargetType="Image">
@@ -46,7 +54,6 @@
             <Style x:Key="registerItemNameTag" TargetType="Image">
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
                 <Setter Property="Margin" Value="20, 0, 0, 0"/>
-                
             </Style>
             <Style x:Key="registerItemName" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
@@ -60,7 +67,7 @@
             
             <!--Right side date-->
             <Style x:Key="registerItemDateText" TargetType="Label">
-                <Setter Property="TextColor" Value="Teal"/>
+                <Setter Property="TextColor" Value="Gray"/>
                 <Setter Property="FontSize" Value="30"/>
             </Style>
         </ResourceDictionary>
@@ -71,14 +78,14 @@
         <!--Upper elements-->
         <StackLayout Style="{StaticResource upperButtons}">
             <StackLayout Style="{StaticResource leftButtons}">
-                <Button Text="#drink" Style="{StaticResource button}"/>
-                <Button Text="#Food" Style="{StaticResource button}"/>
-                <Button Text="#ToSee" Style="{StaticResource button}"/>
+                <Button Text="#drink" Style="{StaticResource tagButton}"/>
+                <Button Text="#Food" Style="{StaticResource tagButton}"/>
+                <Button Text="#ToSee" Style="{StaticResource tagButton}"/>
             </StackLayout>
             <StackLayout Style="{StaticResource rightButtons}">
                 <Label Text="{Binding SortText}" VerticalOptions="Center"/>
-                <ImageButton Source="arrowDown.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortDown}"/>
-                <ImageButton Source="arrowUp.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortUp}"/>
+                <ImageButton Source="arrowDown.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortDown}" Style="{StaticResource arrowButton}"/>
+                <ImageButton Source="arrowUp.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortUp}" Style="{StaticResource arrowButton}"/>
             </StackLayout>
         </StackLayout>
         

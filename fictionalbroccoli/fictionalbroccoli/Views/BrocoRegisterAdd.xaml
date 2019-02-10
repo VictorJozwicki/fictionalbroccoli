@@ -25,6 +25,7 @@
             <Label Text="Tag" Margin="0, 20, 0, 0"/>
             <Picker>
                 <Picker.Items>
+                    <x:String>None</x:String> 
                     <x:String>Beer</x:String> 
                     <x:String>Factorio</x:String>
                 </Picker.Items>

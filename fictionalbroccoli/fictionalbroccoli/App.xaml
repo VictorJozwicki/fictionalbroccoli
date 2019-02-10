@@ -29,8 +29,8 @@
             
             
             <!--Colors-->
-            <Color x:Key="whiteGray">#333333</Color>
-            <Color x:Key="whiteLessGray">#666666</Color>
+            <Color x:Key="darkerWhite">#f5f5f5</Color>
+            <Color x:Key="whiterGray">#666666</Color>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
