@@ -19,7 +19,7 @@ namespace fictionalbroccoli.ViewModels
         public DelegateCommand<Registration> CommandSortUp { get; private set; }
         public DelegateCommand<Registration> CommandSortDown { get; private set; }
         private List<Registration> _registrations;
-        private string _arrowUp = "arrowUp", _arrowDown = "arrowDown";
+        private string _arrowUp = "arrowUpSelected", _arrowDown = "arrowDown";
 
         public List<Registration> Registrations
         {
