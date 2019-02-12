@@ -4,10 +4,10 @@
              x:Class="fictionalbroccoli.Views.MainPage" 
              Title="{Binding Title}">
     <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="0, 20, 0, 0">
-        <Label Text="Projet developpement mobile" HorizontalOptions="Center" />
+        <Label Text="Projet developpement mobile" HorizontalOptions="Center" Font="Bold" TextColor="{StaticResource normalFont}"/>
         
-        <Label Text="2018 - 2019" HorizontalOptions="Center" />
+        <Label Text="2018 - 2019" HorizontalOptions="Center" TextColor="{StaticResource thirdFont}"/>
             
-        <Label Text="Groupe JOZWICKI / LETULLIER" HorizontalOptions="Center" />
+        <Label Text="Groupe JOZWICKI / LETULLIER" HorizontalOptions="Center" Margin="0, 5" TextColor="{StaticResource lighterFont}"/>
     </StackLayout>
 </ContentPage>

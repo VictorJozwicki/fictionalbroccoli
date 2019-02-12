@@ -39,6 +39,7 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleAdd()
         {
+            Registration.Date = DateTime.Now;
             _registerService.Add(Registration);
             _navigationService.NavigateAsync("/AppliMenu/NavigationPage/BrocoRegister");
         }

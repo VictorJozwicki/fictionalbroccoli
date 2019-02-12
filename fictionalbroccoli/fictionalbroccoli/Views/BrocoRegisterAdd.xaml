@@ -23,14 +23,14 @@
             <Entry Text="{Binding Registration.Name}" Placeholder="Name"/>
             <Entry Text="{Binding Registration.Description}" Placeholder="Description" />
             <Label Text="Tag" Margin="0, 20, 0, 0"/>
-            <Picker>
+            <Picker SelectedItem="{Binding Registration.Tag}"> 
                 <Picker.Items>
-                    <x:String>None</x:String> 
-                    <x:String>Beer</x:String> 
-                    <x:String>Factorio</x:String>
+                    <x:String>#drink</x:String>
+                    <x:String>#food</x:String>
+                    <x:String>#factorio</x:String>
                 </Picker.Items>
             </Picker>
         </StackLayout>
-        <ImageButton Source="save.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandAdd}" HorizontalOptions="End" Margin="0, 0, 200, 0"/>
+        <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandAdd}" HorizontalOptions="End" Margin="0, 0, 200, 0"/>
     </StackLayout>
 </ContentPage>

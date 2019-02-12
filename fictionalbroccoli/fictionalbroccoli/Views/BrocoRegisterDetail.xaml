@@ -9,37 +9,44 @@
             
             <!--Labels-->
             <Style x:Key="name" TargetType="Label">
-                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="Font" Value="Bold, 30"/>
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
             </Style>
             <Style x:Key="tag" TargetType="Label">
                 <Setter Property="FontSize" Value="20"/>
-                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="TextColor" Value="{StaticResource thirdFont}"/>
                 <Setter Property="HorizontalOptions" Value="End"/>
-                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+            </Style>
+            <Style x:Key="description" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="TextColor" Value="{StaticResource lighterFont}"/>
             </Style>
             <Style x:Key="position" TargetType="Label">
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="TextColor" Value="{StaticResource thirdFont}"/>
             </Style>
             <Style x:Key="address" TargetType="Label">
-                <Setter Property="FontSize" Value="20"/>
-                <Setter Property="TextColor" Value="Black"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="TextColor" Value="{StaticResource thirdFont}"/>
             </Style>
             
             <!--Other-->
             <Style x:Key="picture" TargetType="Image">
                 
             </Style>
-            <Style x:Key="mainText" TargetType="StackLayout">
-                <Setter Property="Margin" Value="10, 20" />
+            <Style x:Key="main" TargetType="StackLayout">
+                <Setter Property="Margin" Value="40, 20" />
             </Style>
             <Style x:Key="otherInfos" TargetType="StackLayout">
-                <Setter Property="Margin" Value="0, 20" />
+                <Setter Property="Margin" Value="0, 30" />
             </Style>
-            
-            
+            <Style x:Key="buttonWrapper" TargetType="StackLayout">
+                <Setter Property="Margin" Value="40, 0" />
+                <Setter Property="Orientation" Value="Horizontal" />
+                <Setter Property="HorizontalOptions" Value="End" />
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
     
@@ -47,24 +54,24 @@
         
         <StackLayout Style="{StaticResource picture}" HorizontalOptions="Center">
             <Image Source="factorio" WidthRequest="300" HeightRequest="150"/>
-            <Label Text="Photo prise à 17h35" HorizontalOptions="End"/>
+            <Label Text="{Binding Date}" HorizontalOptions="End"/>
         </StackLayout>
         
-        <StackLayout Style="{StaticResource mainText}">
+        <StackLayout Style="{StaticResource main}">
             <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand">
             <Label Text="{Binding Name}" Style="{StaticResource name}"/> 
-            <Label Text="#tag" Style="{StaticResource tag}"/>
+            <Label Text="{Binding Tag}" Style="{StaticResource tag}"/>
             </StackLayout>
-            <Label Text="{Binding Description}"/>
+            <Label Text="{Binding Description}" Style="{StaticResource description}"/>
             <StackLayout Style="{StaticResource otherInfos}">
                 <Label Text="49.119308 - 6.175716" Style="{StaticResource position}"/>
                 <Label Text="X rue des coteaux, 57070 St Julien Les Metz" Style="{StaticResource address}"/>
             </StackLayout>
         </StackLayout>
         
-        <StackLayout Orientation="Horizontal" HorizontalOptions="End">
-            <ImageButton Source="delete.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandDelete}"/>
-            <ImageButton Source="save.png" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSave}"/>
+        <StackLayout Style="{StaticResource buttonWrapper}" >
+            <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandSave}"/>
+            <ImageButton Source="delete.png" Style="{StaticResource imageButton}" Command="{Binding CommandDelete}"/>
         </StackLayout>
     </StackLayout>
 </ContentPage>

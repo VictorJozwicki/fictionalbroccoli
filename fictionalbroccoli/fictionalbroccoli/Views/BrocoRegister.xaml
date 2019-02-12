@@ -12,12 +12,10 @@
             </Style>
             <Style x:Key="registerItem" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"/>
-<!--                <Setter Property="Padding" Value="10"/>-->
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
             </Style>
             <Style x:Key="registerItemOutter" TargetType="StackLayout">
                 <Setter Property="Orientation" Value="Horizontal"/>
-<!--                <Setter Property="Margin" Value="0, 10"/>-->
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
             </Style>
             
@@ -56,19 +54,21 @@
                 <Setter Property="Margin" Value="20, 0, 0, 0"/>
             </Style>
             <Style x:Key="registerItemName" TargetType="Label">
-                <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontSize" Value="30" />
+                <Setter Property="TextColor" Value="{StaticResource normalFont}"/>
+                <Setter Property="Font" Value="Bold, 30"/>
             </Style>
             <Style x:Key="registerItemTag" TargetType="Label">
-                <Setter Property="TextColor" Value="Gray"/>
-                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="TextColor" Value="{StaticResource thirdFont}"/>
+                <Setter Property="FontSize" Value="18"/>
                 <Setter Property="Margin" Value="0, 10"/>
             </Style>
             
             <!--Right side date-->
             <Style x:Key="registerItemDateText" TargetType="Label">
-                <Setter Property="TextColor" Value="Gray"/>
-                <Setter Property="FontSize" Value="30"/>
+                <Setter Property="TextColor" Value="{StaticResource thirdFont}"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
             </Style>
         </ResourceDictionary>
     </Application.Resources>
@@ -104,10 +104,10 @@
                                     <!--Name and tag-->
                                     <StackLayout Style="{StaticResource registerItemNameTag}" >
                                         <Label Text="{Binding Name}" Style="{StaticResource registerItemName}"/>
-                                        <Label Text="#Tag" Style="{StaticResource registerItemTag}"/>
+                                        <Label Text="{Binding Tag}" Style="{StaticResource registerItemTag}"/>
                                     </StackLayout>
                                     <!--The date text on the right-->
-                                    <Label Text="DateText" Style="{StaticResource registerItemDateText}" HorizontalOptions="End"/>
+                                    <Label Text="{Binding Date}" Style="{StaticResource registerItemDateText}"/>
                                 </StackLayout>
                             </Frame>
                         </StackLayout>

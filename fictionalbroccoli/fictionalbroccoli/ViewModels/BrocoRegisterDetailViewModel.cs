@@ -17,7 +17,7 @@ namespace fictionalbroccoli.ViewModels
         public INavigationService _navigationService;
         public IRegisterService _registerService;
         public IDialogService _dialogService;
-        public Registration registration;
+        public Registration _registration;
 
         private string _name = "";
         public string Name
@@ -31,6 +31,20 @@ namespace fictionalbroccoli.ViewModels
         {
             get { return _description; }
             set { SetProperty(ref _description, value); }
+        }
+
+        private string _date = "";
+        public string Date
+        {
+            get { return _date; }
+            set { SetProperty(ref _date, value); }
+        }
+
+        private string _tag = "";
+        public string Tag
+        {
+            get { return _tag; }
+            set { SetProperty(ref _tag, value); }
         }
 
         public DelegateCommand CommandDelete { get; private set; }
@@ -60,9 +74,15 @@ namespace fictionalbroccoli.ViewModels
         public override void OnNavigatingTo(INavigationParameters parameters)
         {
             base.OnNavigatingTo(parameters);
-            registration = parameters.GetValue<Registration>("Registration");
-            Name = registration.Name;
-            Description = registration.Description;
+            _registration = parameters.GetValue<Registration>("Registration");
+            Name = _registration.Name;
+            Description = _registration.Description;
+            Tag = _registration.Tag;
+            // If today then output string today and test with Date.now == Date
+            DateTime date = _registration.Date;
+            Date = String.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));
+            // On veut l'heure quand c'est aujourd'hui sinon la date
+
         }
 
         private void HandleDelete()
@@ -71,7 +91,7 @@ namespace fictionalbroccoli.ViewModels
             {
                 if (res)
                 {
-                    _registerService.Delete(registration.Id);
+                    _registerService.Delete(_registration.Id);
                     _navigationService.GoBackAsync();
                 }
             });
@@ -81,7 +101,7 @@ namespace fictionalbroccoli.ViewModels
         private void HandleSave()
         {
             var navigationParam = new NavigationParameters();
-            navigationParam.Add("Registration", registration);
+            navigationParam.Add("Registration", _registration);
             _navigationService.NavigateAsync("BrocoRegisterEdit", navigationParam);
         }
     }

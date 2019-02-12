@@ -1,36 +1,63 @@
 <?xml version="1.0" encoding="utf-8"?>
-<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms" 
-                        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
-                        xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms" 
-                        x:Class="fictionalbroccoli.App">
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms" x:Class="fictionalbroccoli.App">
     <Application.Resources>
         <ResourceDictionary>
             <Style x:Key="pageMargin" TargetType="StackLayout">
                 <Setter Property="Margin" Value="20" />
             </Style>
-            
             <Style x:Key="labelOne" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Center" />
                 <Setter Property="VerticalOptions" Value="CenterAndExpand" />
                 <Setter Property="TextColor" Value="Teal" />
             </Style>
-            
             <!--Navigation-->
             <Style x:Key="navigation" TargetType="Label">
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
-                <Setter Property="TextColor" Value="Teal"/>
+                <Setter Property="HorizontalOptions" Value="Center" />
+                <Setter Property="VerticalOptions" Value="CenterAndExpand" />
+                <Setter Property="TextColor" Value="Teal" />
             </Style>
-            
             <!--Button style-->
-            <Style x:Key="button" TargetType="Button">
-                <Setter Property="CornerRadius" Value="40"/>
+            <Style x:Key="imageButton" TargetType="ImageButton">
+                <Setter Property="BackgroundColor" Value="Transparent" />
+                <Setter Property="WidthRequest" Value="50" />
+                <Setter Property="HeightRequest" Value="50" />
             </Style>
-            
-            
             <!--Colors-->
             <Color x:Key="darkerWhite">#f5f5f5</Color>
             <Color x:Key="whiterGray">#666666</Color>
+            <Color x:Key="normalFont">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.85</x:Double>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="lighterFont">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.75</x:Double>
+                </x:Arguments>
+            </Color>
+            <Color x:Key="thirdFont">
+                <x:Arguments>
+                    <x:Double>0</x:Double>
+                    <!-- R/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- G/255 -->
+                    <x:Double>0</x:Double>
+                    <!-- B/255 -->
+                    <x:Double>.60</x:Double>
+                </x:Arguments>
+            </Color>
         </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
