@@ -29,18 +29,29 @@
                 <Setter Property="Orientation" Value="Horizontal"/>
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
             </Style>
-            <Style x:Key="rightButtons" TargetType="StackLayout">
-                <Setter Property="Orientation" Value="Horizontal"/>
-                <Setter Property="HorizontalOptions" Value="End"/>
-            </Style>
-            <Style x:Key="arrowButton" TargetType="ImageButton">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-            </Style>
+            
             <Style x:Key="tagButton" TargetType="Button">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
                 <Setter Property="BorderColor" Value="Black"/> 
                 <Setter Property="BorderWidth" Value="2"/>
                 <Setter Property="CornerRadius" Value="10"/>
+            </Style>
+            
+            <!--Sort button-->
+            <Style x:Key="sortButton" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Padding" Value="10, 0"/>
+            </Style>
+            
+            <Style x:Key="sortButtonLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="TextColor" Value="{StaticResource normalFont}"/>
+                <Setter Property="Margin" Value="10, 0"/>
+                <Setter Property="WidthRequest" Value="100"/>
             </Style>
             
             <!--Picture-->
@@ -73,7 +84,6 @@
         </ResourceDictionary>
     </Application.Resources>
     
-    
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <!--Upper elements-->
         <StackLayout Style="{StaticResource upperButtons}">
@@ -82,9 +92,13 @@
                 <Button Text="#Food" Style="{StaticResource tagButton}"/>
                 <Button Text="#ToSee" Style="{StaticResource tagButton}"/>
             </StackLayout>
-            <StackLayout Style="{StaticResource rightButtons}">
-                <ImageButton Source="{Binding ArrowDown}" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortDown}" Style="{StaticResource arrowButton}"/>
-                <ImageButton Source="{Binding ArrowUp}" WidthRequest="50" HeightRequest="50" Command="{Binding CommandSortUp}" Style="{StaticResource arrowButton}"/>
+            
+            <StackLayout Style="{StaticResource sortButton}">
+                <Image Source="{Binding SortImageSource}" WidthRequest="25" HeightRequest="25" />
+                <Label Text="{Binding SortText}" Style="{StaticResource sortButtonLabel}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CommandSort}"/>
+                </StackLayout.GestureRecognizers>
             </StackLayout>
         </StackLayout>
         

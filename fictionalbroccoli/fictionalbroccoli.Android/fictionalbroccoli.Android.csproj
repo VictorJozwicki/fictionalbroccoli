@@ -98,6 +98,8 @@
     <AndroidResource Include="Resources\drawable\home.png" />
     <AndroidResource Include="Resources\drawable\list.png" />
     <AndroidResource Include="Resources\drawable\map.png" />
+    <AndroidResource Include="Resources\drawable\lightDownArrow.png" />
+    <AndroidResource Include="Resources\drawable\lightUpArrow.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Properties\AndroidManifest.xml" />
