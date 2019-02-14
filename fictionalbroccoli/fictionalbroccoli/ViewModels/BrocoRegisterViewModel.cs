@@ -8,6 +8,7 @@ using Prism.Logging;
 using Prism.Services;
 using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
+using System.Collections.ObjectModel;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -20,8 +21,8 @@ namespace fictionalbroccoli.ViewModels
         public DelegateCommand<Registration> CommandSortDown { get; private set; }
         public DelegateCommand<Registration> CommandSort { get; private set; }
 
-        private List<Registration> _registrations;
-        public List<Registration> Registrations
+        private ObservableCollection<Registration> _registrations;
+        public ObservableCollection<Registration> Registrations
         {
             get { return _registrations;  }
             set { SetProperty(ref _registrations, value);  }
@@ -63,7 +64,9 @@ namespace fictionalbroccoli.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            Registrations = _registerService.GetAll(); // Gotta catch them all
+            Registrations = new ObservableCollection<Registration>(_registerService.GetAll()); // Gotta catch them all
+            // Le plus simple c'est de rajouter un attribut DateText à Registration et ici de parcourir chacun pour leur appeler la fonction qui créer le DateText
+            // item.DateText = DateTextString(item.Date);
             this.SortUp();
         }
 
@@ -83,7 +86,7 @@ namespace fictionalbroccoli.ViewModels
                 SortRecent = false;
                 SortText = "Plus ancien";
                 SortImageSource = "lightDownArrow";
-                Registrations = SortDown();
+                SortDown();
             }
             else
             {
@@ -96,13 +99,28 @@ namespace fictionalbroccoli.ViewModels
 
         private void SortUp()
         {
-            Registrations.Sort((x, y) => DateTime.Compare(y.Date, x.Date)); // Fonctionne tout seul
+            Registrations = new ObservableCollection<Registration>(Registrations.OrderByDescending(i => i.Date));
         }
 
-        private List<Registration> SortDown()
+        private void SortDown()
         {
-            Registrations.Sort((x, y) => DateTime.Compare(x.Date, y.Date)); // Fonctionne tout seul
-            return Registrations;
+            Registrations = new ObservableCollection<Registration>(Registrations.Reverse());
+        }
+
+        // Returns a string with the DateText corresponding to the difference with the DateTime given
+        private string DateTextString(DateTime date) // TODO: Il faut itérer chaque Registrations et prendre la date de chaque éléments et faire ça
+        {
+            string DateText = "il y a ";
+
+            DateTime today = DateTime.Now;
+            TimeSpan diff = today.Subtract(date);
+
+            if (diff.Days >= 1)
+                return String.Concat(DateText, diff.Days, "jours");
+            else if (diff.Minutes >= 1)
+                return String.Concat(DateText, diff.Minutes, " minutes");
+            else
+                return String.Concat(DateText, diff.Seconds, " secondes");
         }
     }
 }
