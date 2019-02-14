@@ -30,11 +30,13 @@
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
             </Style>
             
+            <!--Tag-->
             <Style x:Key="tagButton" TargetType="Button">
-                <Setter Property="BackgroundColor" Value="Transparent"/>
-                <Setter Property="BorderColor" Value="Black"/> 
-                <Setter Property="BorderWidth" Value="2"/>
-                <Setter Property="CornerRadius" Value="10"/>
+                <Setter Property="BackgroundColor" Value="#00BFFF"/>
+                <Setter Property="TextColor" Value="White"/>
+                <Setter Property="CornerRadius" Value="50"/>
+                <Setter Property="HeightRequest" Value="20"/>
+                <Setter Property="Padding" Value="5"/>
             </Style>
             
             <!--Sort button-->
@@ -49,7 +51,7 @@
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
                 <Setter Property="FontSize" Value="17"/>
-                <Setter Property="TextColor" Value="{StaticResource normalFont}"/>
+                <Setter Property="TextColor" Value="{StaticResource lighterFont}"/>
                 <Setter Property="Margin" Value="10, 0"/>
                 <Setter Property="WidthRequest" Value="100"/>
             </Style>
@@ -87,12 +89,13 @@
     <StackLayout HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
         <!--Upper elements-->
         <StackLayout Style="{StaticResource upperButtons}">
+            <!--Tags-->
             <StackLayout Style="{StaticResource leftButtons}">
                 <Button Text="#drink" Style="{StaticResource tagButton}"/>
                 <Button Text="#Food" Style="{StaticResource tagButton}"/>
-                <Button Text="#ToSee" Style="{StaticResource tagButton}"/>
+                <Button Text="#VideoGame" Style="{StaticResource tagButton}"/>
             </StackLayout>
-            
+            <!--Sort-->
             <StackLayout Style="{StaticResource sortButton}">
                 <Image Source="{Binding SortImageSource}" WidthRequest="25" HeightRequest="25" />
                 <Label Text="{Binding SortText}" Style="{StaticResource sortButtonLabel}"/>

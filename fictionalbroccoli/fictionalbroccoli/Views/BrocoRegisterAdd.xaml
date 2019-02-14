@@ -13,6 +13,22 @@
             <Style x:Key="inputStack" TargetType="StackLayout">
                 <Setter Property="Margin" Value="30, 40, 250, 20"/>
             </Style>
+            
+            <!--Add button-->
+            <Style x:Key="addButton" TargetType="StackLayout">
+                <Setter Property="Orientation" Value="Horizontal"/>
+                <Setter Property="HorizontalOptions" Value="End"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Padding" Value="10, 0"/>
+                <Setter Property="Margin" Value="0, 0, 250, 0"/>
+                <!--<Setter Property="BackgroundColor" Value="#00BFFF"/>-->
+            </Style>
+            <Style x:Key="addLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" Value="Start"/>
+                <Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+                <Setter Property="FontSize" Value="17"/>
+                <Setter Property="TextColor" Value="{StaticResource normalFont}"/>
+            </Style>
         </ResourceDictionary>
     </Application.Resources>
     <StackLayout>
@@ -23,7 +39,7 @@
             <Entry Text="{Binding Registration.Name}" Placeholder="Name"/>
             <Entry Text="{Binding Registration.Description}" Placeholder="Description" />
             <Label Text="Tag" Margin="0, 20, 0, 0"/>
-            <Picker SelectedItem="{Binding Registration.Tag}"> 
+            <Picker SelectedItem="{Binding Registration.Tag}">
                 <Picker.Items>
                     <x:String>#drink</x:String>
                     <x:String>#food</x:String>
@@ -32,5 +48,12 @@
             </Picker>
         </StackLayout>
         <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandAdd}" HorizontalOptions="End" Margin="0, 0, 200, 0"/>
+        <StackLayout Style="{StaticResource addButton}">
+            <Image Source="addSimple" WidthRequest="25" HeightRequest="25" />
+            <Label Text="Ajouter" Style="{StaticResource addLabel}"/>
+            <StackLayout.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CommandAdd}"/>
+            </StackLayout.GestureRecognizers>
+        </StackLayout>
     </StackLayout>
 </ContentPage>
