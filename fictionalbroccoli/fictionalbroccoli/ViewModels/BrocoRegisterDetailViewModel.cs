@@ -47,6 +47,13 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _tag, value); }
         }
 
+        public ImageSource _imageSrc;
+        public ImageSource ImageSrc
+        {
+            get { return _imageSrc; }
+            set { SetProperty(ref _imageSrc, value); }
+        }
+
         public DelegateCommand CommandDelete { get; private set; }
         public DelegateCommand CommandSave { get; private set; }
 
@@ -78,6 +85,7 @@ namespace fictionalbroccoli.ViewModels
             Name = _registration.Name;
             Description = _registration.Description;
             Tag = _registration.Tag;
+            ImageSrc = ImageSource.FromFile(_registration.ImagePath);
             // If today then output string today and test with Date.now == Date
             DateTime date = _registration.Date;
             Date = String.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));

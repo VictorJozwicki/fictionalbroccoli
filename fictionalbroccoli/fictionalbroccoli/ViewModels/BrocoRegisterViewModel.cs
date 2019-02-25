@@ -9,6 +9,7 @@ using Prism.Services;
 using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using System.Collections.ObjectModel;
+using Xamarin.Forms;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -56,10 +57,10 @@ namespace fictionalbroccoli.ViewModels
             CommandGoDetail = new DelegateCommand<Registration>(HandleDetail);
             CommandSort = new DelegateCommand<Registration>(HandleSort);
 
-
-
             _navigationService = navigationService;
             _registerService = registerService; // Local service
+
+
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
@@ -67,6 +68,15 @@ namespace fictionalbroccoli.ViewModels
             Registrations = new ObservableCollection<Registration>(_registerService.GetAll()); // Gotta catch them all
             // Le plus simple c'est de rajouter un attribut DateText à Registration et ici de parcourir chacun pour leur appeler la fonction qui créer le DateText
             // item.DateText = DateTextString(item.Date);
+
+            foreach(Registration registration in Registrations)
+            {
+                registration.DateText = DateTextString(registration.Date);
+                if (registration.ImagePath == null)
+                {
+                    registration.ImagePath = "greenbox.png";
+                }
+            }
             this.SortUp();
         }
 
@@ -116,11 +126,16 @@ namespace fictionalbroccoli.ViewModels
             TimeSpan diff = today.Subtract(date);
 
             if (diff.Days >= 1)
-                return String.Concat(DateText, diff.Days, "jours");
+                return String.Concat(DateText, diff.Days, " jours");
             else if (diff.Minutes >= 1)
                 return String.Concat(DateText, diff.Minutes, " minutes");
             else
                 return String.Concat(DateText, diff.Seconds, " secondes");
         }
+
+        //private ImageSource ToImageSource(string path)
+        //{
+        //   return ImageSource.FromFile(path);
+        //}
     }
 }

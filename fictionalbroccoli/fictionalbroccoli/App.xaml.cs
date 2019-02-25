@@ -49,6 +49,7 @@ namespace fictionalbroccoli
             // Services
             containerRegistry.RegisterSingleton<IDialogService, DialogService>();
             containerRegistry.RegisterSingleton<IRegisterService, RegisterService>();
+            containerRegistry.RegisterSingleton<IPictureService, PictureService>();
         }
     }
 }
