@@ -1,17 +1,10 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Navigation;
-using Prism.Logging;
-using Prism.Services;
 using fictionalbroccoli.Services;
 using fictionalbroccoli.Models;
 using Xamarin.Forms;
-using Plugin.Media;
 using Plugin.Media.Abstractions;
-using System.Diagnostics;
 
 namespace fictionalbroccoli.ViewModels
 {

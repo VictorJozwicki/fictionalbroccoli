@@ -52,11 +52,23 @@ namespace fictionalbroccoli.Services
                 new DateTime(2008, 5, 1),
                 "factorio"
             );
-            //Registration registration2 = new Registration("Aye sir", "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", "#food", DateTime.Now);
-            //Registration registration3 = new Registration("Albert3", "The best three", "#videogame", DateTime.Now);
+            Registration registration2 = new Registration(
+                "Aye sir", 
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.", 
+                "#food",
+                 DateTime.Now,
+                 "factorio"
+                );
+            Registration registration3 = new Registration(
+                "Albert3",
+                "The best three", 
+                "#videogame", 
+                DateTime.Now,
+                "factorio"
+                );
             this.Add(registration);
-            //this.Add(registration2);
-            //this.Add(registration3);
+            this.Add(registration2);
+            this.Add(registration3);
         }
     }
 }
