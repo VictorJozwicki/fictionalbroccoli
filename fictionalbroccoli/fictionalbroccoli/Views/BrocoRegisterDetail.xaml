@@ -70,7 +70,7 @@
         </StackLayout>
         
         <StackLayout Style="{StaticResource buttonWrapper}" >
-            <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandSave}"/>
+            <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandGoUpdate}"/>
             <ImageButton Source="delete.png" Style="{StaticResource imageButton}" Command="{Binding CommandDelete}"/>
         </StackLayout>
     </StackLayout>

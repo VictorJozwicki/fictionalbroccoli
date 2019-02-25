@@ -9,6 +9,7 @@ using Prism.Services;
 using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -55,7 +56,7 @@ namespace fictionalbroccoli.ViewModels
         }
 
         public DelegateCommand CommandDelete { get; private set; }
-        public DelegateCommand CommandSave { get; private set; }
+        public DelegateCommand CommandGoUpdate { get; private set; }
 
 
         // Functions 
@@ -69,7 +70,7 @@ namespace fictionalbroccoli.ViewModels
             _dialogService = dialogService;
             Title = "Enregistrement";
             CommandDelete =  new DelegateCommand(HandleDelete);
-            CommandSave = new DelegateCommand(HandleSave);
+            CommandGoUpdate = new DelegateCommand(HandleGoUpdate);
 
         }
 
@@ -106,11 +107,12 @@ namespace fictionalbroccoli.ViewModels
 
         }
 
-        private void HandleSave()
+        private void HandleGoUpdate()
         {
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Registration", _registration);
             _navigationService.NavigateAsync("BrocoRegisterEdit", navigationParam);
+            Debug.WriteLine("ok");
         }
     }
 }
