@@ -1,11 +1,7 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 using Prism.Commands;
 using Prism.Navigation;
-using Prism.Logging;
-using Prism.Services;
 using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using System.Collections.ObjectModel;
@@ -56,18 +52,21 @@ namespace fictionalbroccoli.ViewModels
             CommandGoDetail = new DelegateCommand<Registration>(HandleDetail);
             CommandSort = new DelegateCommand<Registration>(HandleSort);
 
-
-
             _navigationService = navigationService;
-            _registerService = registerService; // Local service
+            _registerService = registerService;
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            Registrations = new ObservableCollection<Registration>(_registerService.GetAll()); // Gotta catch them all
-            // Le plus simple c'est de rajouter un attribut DateText à Registration et ici de parcourir chacun pour leur appeler la fonction qui créer le DateText
-            // item.DateText = DateTextString(item.Date);
-            this.SortUp();
+            Registrations = new ObservableCollection<Registration>(_registerService.GetAll());
+
+            foreach(Registration registration in Registrations)
+            {
+                registration.DateText = ConvertDateToHumanText(registration.Date);
+                if (registration.ImagePath == null)
+                    registration.ImagePath = "greenbox.png";
+            }
+            SortUp();
         }
 
 
@@ -108,7 +107,7 @@ namespace fictionalbroccoli.ViewModels
         }
 
         // Returns a string with the DateText corresponding to the difference with the DateTime given
-        private string DateTextString(DateTime date) // TODO: Il faut itérer chaque Registrations et prendre la date de chaque éléments et faire ça
+        private string ConvertDateToHumanText(DateTime date)
         {
             string DateText = "il y a ";
 
@@ -116,11 +115,14 @@ namespace fictionalbroccoli.ViewModels
             TimeSpan diff = today.Subtract(date);
 
             if (diff.Days >= 1)
-                return String.Concat(DateText, diff.Days, "jours");
+                return String.Concat(DateText, diff.Days, " jours");
+            else if (diff.Hours >= 1)
+                return String.Concat(DateText, diff.Hours, " heures");
             else if (diff.Minutes >= 1)
                 return String.Concat(DateText, diff.Minutes, " minutes");
             else
                 return String.Concat(DateText, diff.Seconds, " secondes");
         }
+
     }
 }

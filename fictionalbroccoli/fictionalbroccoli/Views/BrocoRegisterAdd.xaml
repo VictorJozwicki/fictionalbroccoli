@@ -33,7 +33,8 @@
     </Application.Resources>
     <StackLayout>
         <StackLayout Style="{StaticResource imageHolder}">
-            <Label Text="TAKE PICTURE" FontSize="Large"/> <!--Obivously change to the image picker-->
+            <Image Source="{Binding ImageSrc}" WidthRequest="100" HeightRequest="100" />
+            <Button x:Name="CameraButton" Text="Prendre une photo" Command="{Binding CommandTakePicture}" />
         </StackLayout>
         <StackLayout Style="{StaticResource inputStack}">
             <Entry Text="{Binding Registration.Name}" Placeholder="Name"/>

@@ -19,11 +19,16 @@
   <ItemGroup>
     <Reference Include="Mono.Android" />
     <Reference Include="mscorlib" />
+    <Reference Include="Mono.Android">
+      <HintPath>..\..\..\..\..\..\Library\Frameworks\Xamarin.Android.framework\Versions\9.1.8-0\lib\xamarin.android\xbuild-frameworks\MonoAndroid\v7.1\Mono.Android.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="BrocoRegisterAdd.xaml" />
+    <EmbeddedResource Remove="Views\BrocoRegisterUpdate.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="BrocoRegisterAdd.xaml.cs" />
+    <Compile Remove="ViewModels\BrocoRegisterUpdateViewModel.cs" />
   </ItemGroup>
 </Project>

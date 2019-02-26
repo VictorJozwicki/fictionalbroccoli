@@ -9,10 +9,11 @@ using Prism.Services;
 using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using Xamarin.Forms;
+using System.Diagnostics;
 
 namespace fictionalbroccoli.ViewModels
 {
-    public class BrocoRegisterDetailViewModel : ViewModelBase, INavigatedAware
+    public class BrocoRegisterDetailViewModel : ViewModelBase
     {
         public INavigationService _navigationService;
         public IRegisterService _registerService;
@@ -47,8 +48,15 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _tag, value); }
         }
 
+        public ImageSource _imageSrc;
+        public ImageSource ImageSrc
+        {
+            get { return _imageSrc; }
+            set { SetProperty(ref _imageSrc, value); }
+        }
+
         public DelegateCommand CommandDelete { get; private set; }
-        public DelegateCommand CommandSave { get; private set; }
+        public DelegateCommand CommandGoUpdate { get; private set; }
 
 
         // Functions 
@@ -62,7 +70,7 @@ namespace fictionalbroccoli.ViewModels
             _dialogService = dialogService;
             Title = "Enregistrement";
             CommandDelete =  new DelegateCommand(HandleDelete);
-            CommandSave = new DelegateCommand(HandleSave);
+            CommandGoUpdate = new DelegateCommand(HandleGoUpdate);
 
         }
 
@@ -78,6 +86,7 @@ namespace fictionalbroccoli.ViewModels
             Name = _registration.Name;
             Description = _registration.Description;
             Tag = _registration.Tag;
+            ImageSrc = ImageSource.FromFile(_registration.ImagePath);
             // If today then output string today and test with Date.now == Date
             DateTime date = _registration.Date;
             Date = String.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));
@@ -98,11 +107,11 @@ namespace fictionalbroccoli.ViewModels
 
         }
 
-        private void HandleSave()
+        private async void HandleGoUpdate()
         {
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Registration", _registration);
-            _navigationService.NavigateAsync("BrocoRegisterEdit", navigationParam);
+            await _navigationService.NavigateAsync("BrocoRegisterEdit", navigationParam);
         }
     }
 }
