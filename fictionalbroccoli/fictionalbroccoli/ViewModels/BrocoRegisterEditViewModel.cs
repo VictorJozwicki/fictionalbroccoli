@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace fictionalbroccoli.ViewModels
 {
-    public class BrocoRegisterEditViewModel : ViewModelBase, INavigatedAware
+    public class BrocoRegisterEditViewModel : ViewModelBase
     {
         public INavigationService _navigationService;
         public IRegisterService _registerService;
@@ -30,7 +30,6 @@ namespace fictionalbroccoli.ViewModels
 
         public override void OnNavigatingTo(INavigationParameters parameters)
         {
-            Debug.WriteLine("hey !");
             base.OnNavigatingTo(parameters);
             Registration = parameters.GetValue<Models.Registration>("Registration");
         }

@@ -7,6 +7,6 @@
         <Entry Text="{Binding Registration.Name}"></Entry>
         <Entry Text="{Binding Registration.Description}"></Entry>
         
-        <Button Text="Editer" Style="{StaticResource button}" Command="{Binding CommandSave}"/>
+        <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandSave}"/>
     </StackLayout>
 </ContentPage>

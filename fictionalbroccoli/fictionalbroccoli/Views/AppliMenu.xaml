@@ -86,8 +86,6 @@
                                 <TapGestureRecognizer Command="{Binding CommandGoBonus}"/>
                             </StackLayout.GestureRecognizers>
                 </StackLayout>
-                
-                <Label Text="{Binding Test}" />
             </StackLayout>
         </ContentPage>
     </MasterDetailPage.Master>

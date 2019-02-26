@@ -116,6 +116,8 @@ namespace fictionalbroccoli.ViewModels
 
             if (diff.Days >= 1)
                 return String.Concat(DateText, diff.Days, " jours");
+            else if (diff.Hours >= 1)
+                return String.Concat(DateText, diff.Hours, " heures");
             else if (diff.Minutes >= 1)
                 return String.Concat(DateText, diff.Minutes, " minutes");
             else

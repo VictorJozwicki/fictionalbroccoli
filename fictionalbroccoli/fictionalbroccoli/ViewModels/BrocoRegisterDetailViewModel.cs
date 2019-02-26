@@ -13,7 +13,7 @@ using System.Diagnostics;
 
 namespace fictionalbroccoli.ViewModels
 {
-    public class BrocoRegisterDetailViewModel : ViewModelBase, INavigatedAware
+    public class BrocoRegisterDetailViewModel : ViewModelBase
     {
         public INavigationService _navigationService;
         public IRegisterService _registerService;
@@ -107,12 +107,11 @@ namespace fictionalbroccoli.ViewModels
 
         }
 
-        private void HandleGoUpdate()
+        private async void HandleGoUpdate()
         {
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Registration", _registration);
-            _navigationService.NavigateAsync("BrocoRegisterEdit", navigationParam);
-            Debug.WriteLine("ok");
+            await _navigationService.NavigateAsync("BrocoRegisterEdit", navigationParam);
         }
     }
 }

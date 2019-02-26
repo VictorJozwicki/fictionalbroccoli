@@ -22,8 +22,10 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove="BrocoRegisterAdd.xaml" />
+    <EmbeddedResource Remove="Views\BrocoRegisterUpdate.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="BrocoRegisterAdd.xaml.cs" />
+    <Compile Remove="ViewModels\BrocoRegisterUpdateViewModel.cs" />
   </ItemGroup>
 </Project>
