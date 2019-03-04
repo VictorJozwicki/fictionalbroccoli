@@ -3,15 +3,17 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
              x:Class="fictionalbroccoli.Views.BrocoRegisterEdit">
-     <StackLayout>
-<!--        <StackLayout Style="{StaticResource imageHolder}">-->
-            <Image Source="{Binding ImageSrc}" WidthRequest="100" HeightRequest="100" />
-            <Button x:Name="CameraButton" Text="Prendre une photo" Command="{Binding CommandTakePicture}" />
-<!--        </StackLayout>-->
-        
-        <Entry Text="{Binding Registration.Name}"></Entry>
-        <Entry Text="{Binding Registration.Description}"></Entry>
-        
-        <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandUpdate}"/>
-    </StackLayout>
+    <ScrollView>
+         <StackLayout>
+    <!--        <StackLayout Style="{StaticResource imageHolder}">-->
+                <Image Source="{Binding ImageSrc}" WidthRequest="600" HeightRequest="300"/>
+                <Button x:Name="CameraButton" Text="Prendre une photo" Command="{Binding CommandTakePicture}" />
+    <!--        </StackLayout>-->
+            
+            <Entry Text="{Binding Registration.Name}"></Entry>
+            <Entry Text="{Binding Registration.Description}"></Entry>
+            
+            <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandUpdate}"/>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

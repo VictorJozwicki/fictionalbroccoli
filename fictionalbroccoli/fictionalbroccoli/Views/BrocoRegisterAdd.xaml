@@ -7,7 +7,6 @@
         <ResourceDictionary>
              <Style x:Key="imageHolder" TargetType="StackLayout">
                 <Setter Property="Padding" Value="150"/>
-                <Setter Property="BackgroundColor" Value="Silver"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             </Style>
             <Style x:Key="inputStack" TargetType="StackLayout">
@@ -31,30 +30,33 @@
             </Style>
         </ResourceDictionary>
     </Application.Resources>
-    <StackLayout>
-        <StackLayout Style="{StaticResource imageHolder}">
-            <Image Source="{Binding ImageSrc}" WidthRequest="100" HeightRequest="100" />
+    <ScrollView>
+        <StackLayout>
+            <StackLayout Style="{StaticResource imageHolder}">
+                <Image Source="{Binding ImageSrc}" WidthRequest="600" HeightRequest="300"/>
+            </StackLayout>
             <Button x:Name="CameraButton" Text="Prendre une photo" Command="{Binding CommandTakePicture}" />
+            
+            <StackLayout Style="{StaticResource inputStack}">
+                <Entry Text="{Binding Registration.Name}" Placeholder="Name"/>
+                <Entry Text="{Binding Registration.Description}" Placeholder="Description" />
+                <Label Text="Tag" Margin="0, 20, 0, 0"/>
+                <Picker SelectedItem="{Binding Registration.Tag}">
+                    <Picker.Items>
+                        <x:String>#drink</x:String>
+                        <x:String>#food</x:String>
+                        <x:String>#factorio</x:String>
+                    </Picker.Items>
+                </Picker>
+            </StackLayout>
+            <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandAdd}" HorizontalOptions="End" Margin="0, 0, 200, 0"/>
+            <!--<StackLayout Style="{StaticResource addButton}"> Maybe never
+                <Image Source="addSimple" WidthRequest="25" HeightRequest="25" />
+                <Label Text="Ajouter" Style="{StaticResource addLabel}"/>
+                <StackLayout.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding CommandAdd}"/>
+                </StackLayout.GestureRecognizers>
+            </StackLayout>-->
         </StackLayout>
-        <StackLayout Style="{StaticResource inputStack}">
-            <Entry Text="{Binding Registration.Name}" Placeholder="Name"/>
-            <Entry Text="{Binding Registration.Description}" Placeholder="Description" />
-            <Label Text="Tag" Margin="0, 20, 0, 0"/>
-            <Picker SelectedItem="{Binding Registration.Tag}">
-                <Picker.Items>
-                    <x:String>#drink</x:String>
-                    <x:String>#food</x:String>
-                    <x:String>#factorio</x:String>
-                </Picker.Items>
-            </Picker>
-        </StackLayout>
-        <ImageButton Source="save.png" Style="{StaticResource imageButton}" Command="{Binding CommandAdd}" HorizontalOptions="End" Margin="0, 0, 200, 0"/>
-        <StackLayout Style="{StaticResource addButton}">
-            <Image Source="addSimple" WidthRequest="25" HeightRequest="25" />
-            <Label Text="Ajouter" Style="{StaticResource addLabel}"/>
-            <StackLayout.GestureRecognizers>
-                <TapGestureRecognizer Command="{Binding CommandAdd}"/>
-            </StackLayout.GestureRecognizers>
-        </StackLayout>
-    </StackLayout>
+    </ScrollView>
 </ContentPage>
