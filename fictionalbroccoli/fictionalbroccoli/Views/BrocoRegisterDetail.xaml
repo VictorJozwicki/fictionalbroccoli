@@ -53,7 +53,7 @@
     <StackLayout Style="{StaticResource pageMargin}">
         
         <StackLayout Style="{StaticResource picture}" HorizontalOptions="Center">
-            <Image Source="{Binding ImageSrc}" WidthRequest="300" HeightRequest="150"/>
+            <Image Source="{Binding ImageSrc}" WidthRequest="600" HeightRequest="300"/>
             <Label Text="{Binding Date}" HorizontalOptions="End"/>
         </StackLayout>
         
