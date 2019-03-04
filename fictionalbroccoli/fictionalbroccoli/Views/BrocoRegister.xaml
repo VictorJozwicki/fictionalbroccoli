@@ -116,8 +116,8 @@
                         <StackLayout Style="{StaticResource registerItemOutter}">
                             <Frame Style="{StaticResource registerItemFrame}">
                                 <StackLayout Style="{StaticResource registerItem}" >
-                                   <!-- <controls:CircleImage Source="{Binding ImagePath}" Aspect="AspectFill" WidthRequest="70" HeightRequest="70">
-                                    </controls:CircleImage>-->
+                                    <controls:CircleImage Source="{Binding ImagePath}" Aspect="AspectFill" WidthRequest="70" HeightRequest="70">
+                                    </controls:CircleImage>
                                     <!--Name and tag-->
                                     <StackLayout Style="{StaticResource registerItemNameTag}" >
                                         <Label Text="{Binding Name}" Style="{StaticResource registerItemName}"/>
