@@ -35,6 +35,8 @@ namespace fictionalbroccoli.Services
                         Directory = "Registrations",
                         //Name = $"{DateTime.UtcNow}.jpg",
                         Name = "myphoto.jpg",
+                        PhotoSize = PhotoSize.Medium,
+                        CompressionQuality = 92,
                     };
 
                     MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);

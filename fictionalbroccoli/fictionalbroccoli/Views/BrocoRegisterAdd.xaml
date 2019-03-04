@@ -7,7 +7,6 @@
         <ResourceDictionary>
              <Style x:Key="imageHolder" TargetType="StackLayout">
                 <Setter Property="Padding" Value="150"/>
-                <Setter Property="BackgroundColor" Value="Silver"/>
                 <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
             </Style>
             <Style x:Key="inputStack" TargetType="StackLayout">
@@ -34,7 +33,7 @@
     <ScrollView>
         <StackLayout>
             <StackLayout Style="{StaticResource imageHolder}">
-                <Image Source="{Binding ImageSrc}" WidthRequest="100" HeightRequest="100" />
+                <Image Source="{Binding ImageSrc}" WidthRequest="600" HeightRequest="300"/>
             </StackLayout>
             <Button x:Name="CameraButton" Text="Prendre une photo" Command="{Binding CommandTakePicture}" />
             

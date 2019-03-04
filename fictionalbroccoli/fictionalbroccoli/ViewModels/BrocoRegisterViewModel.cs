@@ -124,5 +124,11 @@ namespace fictionalbroccoli.ViewModels
                 return String.Concat(DateText, diff.Seconds, " secondes");
         }
 
+
+        // Lors d'un click sur un tag, l'ajouter ou le supprimer s'il est dedans, à une liste
+        // Avant d'afficher la liste, faire un filtre sur Registrations et l'update
+        // Registrations = new ObservableCollection<Registration>(Registrations.Reverse());
+        // 
+
     }
 }
