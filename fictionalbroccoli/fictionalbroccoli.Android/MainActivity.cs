@@ -1,15 +1,16 @@
 ﻿using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using ImageCircle.Forms.Plugin.Droid;
+//using ImageCircle.Forms.Plugin.Droid;
 using Plugin.CurrentActivity;
 using Prism;
 using Prism.Ioc;
 
 namespace fictionalbroccoli.Droid
 {
-    [Activity(Label = "fictionalbroccoli", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
-    public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsAppCompatActivity
+
+[Activity(Label = "fictionalbroccoli", Icon = "@mipmap/ic_launcher", Theme = "@style/MainTheme", MainLauncher = true, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
+    public class MainActivity : Xamarin.Forms.Platform.Android.FormsAppCompatActivity
     {
         protected override void OnCreate(Bundle bundle)
         {
