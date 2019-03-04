@@ -22,6 +22,8 @@ namespace fictionalbroccoli.Droid
             global::Xamarin.Forms.Forms.Init(this, bundle);
             CrossCurrentActivity.Current.Init(this, bundle);
             LoadApplication(new App(new AndroidInitializer()));
+
+            Xamarin.FormsMaps.Init(this, bundle);
         }
         public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Android.Content.PM.Permission[] grantResults)
         {
