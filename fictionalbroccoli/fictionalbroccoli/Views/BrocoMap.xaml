@@ -6,4 +6,6 @@
     <StackLayout>
         <Label Text="La broco map !"/>
     </StackLayout>
+    
+    <ContentView Content="{Binding Map}" />
 </ContentPage>
