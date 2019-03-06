@@ -75,15 +75,21 @@ namespace fictionalbroccoli.Services
             return position;
         }
 
-        public void AddPin(Xamarin.Forms.Maps.Position position)
+        public void clearPins()
+        {
+            Map.Pins.Clear();
+        }
+
+        public void AddPin(double latitude, double longitude, string text, EventHandler evnt)
         {
             var pin = new Pin
             {
                 Type = PinType.Place,
-                Position = position,
+                Position = new Xamarin.Forms.Maps.Position(latitude, longitude),
                 Label = "This is a pin !",
-                Address = "custom detail info"
+                Address = text
             };
+            pin.Clicked += evnt;
             Map.Pins.Add(pin);
         }
 

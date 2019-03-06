@@ -65,8 +65,7 @@
             <Label Text="{Binding Description}" Style="{StaticResource description}"/>
             <StackLayout Style="{StaticResource otherInfos}">
 <!--                <Label Text="49.119308 - 6.175716" Style="{StaticResource position}"/>-->
-                <Label Text="{Binding Latitude}" Style="{StaticResource position}"/>
-                <Label Text="{Binding Longitude}" Style="{StaticResource position}"/>
+                <Label Text="{Binding Cordinate}" Style="{StaticResource position}"/>
                 <Label Text="X rue des coteaux, 57070 St Julien Les Metz" Style="{StaticResource address}"/>
             </StackLayout>
         </StackLayout>

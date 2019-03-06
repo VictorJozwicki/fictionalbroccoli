@@ -56,17 +56,11 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _imageSrc, value); }
         }
 
-        public double _latitude;
-        public double Latitude
+        public string _cordinate;
+        public string Cordinate
         {
-            get { return _latitude; }
-            set { SetProperty(ref _latitude, value); }
-        }
-        public double _longitude;
-        public double Longitude
-        {
-            get { return _longitude; }
-            set { SetProperty(ref _longitude, value); }
+            get { return _cordinate; }
+            set { SetProperty(ref _cordinate, value); }
         }
 
         public DelegateCommand CommandDelete { get; private set; }
@@ -104,10 +98,9 @@ namespace fictionalbroccoli.ViewModels
             Tag = _registration.Tag;
             ImageSrc = ImageSource.FromFile(_registration.ImagePath);
             DateTime date = _registration.Date;
-            Date = String.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));
-            Latitude = _registration.Latitude;
-            Longitude = _registration.Longitude;
-            Debug.WriteLine(Latitude);
+            Date = string.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));
+            Cordinate = "" + _registration.Latitude + " - " + _registration.Longitude;
+            Debug.WriteLine(Cordinate);
         }
 
         private void HandleDelete()

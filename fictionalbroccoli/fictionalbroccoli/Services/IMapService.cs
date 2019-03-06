@@ -11,6 +11,7 @@ namespace fictionalbroccoli.Services
         bool IsLocationAvailable();
         void CreateMap();
         Map GetMap();
-        void AddPin(Xamarin.Forms.Maps.Position position);
+        void clearPins();
+        void AddPin(double latitude, double longitude, string text, EventHandler evnt);
     }
 }
