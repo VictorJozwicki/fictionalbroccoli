@@ -55,16 +55,20 @@ namespace fictionalbroccoli.ViewModels
             _mapService.clearPins();
             foreach (Registration registration in registrations)
             {
-                var evnt = new EventHandler(async (object sender, EventArgs e) =>
+                if (registration.Latitude >= 0 && registration.Longitude >= 0)
                 {
-                    Debug.WriteLine("Event fired !");
-                    var p = sender as Pin;
-                    Debug.WriteLine(p);
-                    var navigationParam = new NavigationParameters();
-                    navigationParam.Add("Registration", registration);
-                    await _navigationService.NavigateAsync("BrocoRegisterDetail", navigationParam);
-                });
-                _mapService.AddPin(registration.Latitude, registration.Longitude, registration.Name, evnt);
+                    var evnt = new EventHandler(async (object sender, EventArgs e) =>
+                    {
+                        Debug.WriteLine("Event fired !");
+                        var p = sender as Pin;
+                        Debug.WriteLine(p);
+                        var navigationParam = new NavigationParameters();
+                        navigationParam.Add("Registration", registration);
+                        await _navigationService.NavigateAsync("BrocoRegisterDetail", navigationParam);
+                    });
+                    _mapService.AddPin(registration.Latitude, registration.Longitude, registration.Name, evnt);
+
+                }
             }
         }
     }

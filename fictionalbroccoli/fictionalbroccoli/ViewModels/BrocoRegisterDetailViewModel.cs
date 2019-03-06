@@ -84,7 +84,7 @@ namespace fictionalbroccoli.ViewModels
             _registerService = registerService;
             _dialogService = dialogService;
             Title = "Enregistrement";
-            CommandDelete =  new DelegateCommand(HandleDelete);
+            CommandDelete = new DelegateCommand(HandleDelete);
             CommandGoUpdate = new DelegateCommand(HandleGoUpdate);
 
         }
@@ -108,7 +108,9 @@ namespace fictionalbroccoli.ViewModels
             Date = "Photo prise le " + date.ToString("d") + " à " + date.ToString("t");
             Coordinate = "" + _registration.Latitude + " - " + _registration.Longitude;
             Address = _registration.Address;
-            Debug.WriteLine(Cordinate);
+            if (string.IsNullOrEmpty(Address))
+                Address = "Pas d'adresse connue";
+            Debug.WriteLine(Coordinate);
         }
 
         private void HandleDelete()
