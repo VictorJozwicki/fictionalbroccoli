@@ -5,6 +5,7 @@ using fictionalbroccoli.Services;
 using fictionalbroccoli.Models;
 using Xamarin.Forms;
 using Plugin.Media.Abstractions;
+using System.Diagnostics;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -13,6 +14,7 @@ namespace fictionalbroccoli.ViewModels
         public INavigationService _navigationService;
         public IRegisterService _registerService;
         public IPictureService _pictureService;
+        public IMapService _mapService;
 
         public Registration _registration;
         public Registration Registration
@@ -31,13 +33,18 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _imageSrc, value); }
         }
 
-        public BrocoRegisterAddViewModel(INavigationService navigationService, IRegisterService registerService, IPictureService pictureService) : base(navigationService)
+        public BrocoRegisterAddViewModel(
+            INavigationService navigationService, 
+            IRegisterService registerService, 
+            IPictureService pictureService,
+            IMapService mapService) : base(navigationService)
         {
             Title = "Nouveau";
 
             _registerService = registerService;
             _navigationService = navigationService;
             _pictureService = pictureService;
+            _mapService = mapService;
 
             CommandAdd = new DelegateCommand(HandleAdd);
             CommandTakePicture = new DelegateCommand(HandleTakePicture);
@@ -45,11 +52,16 @@ namespace fictionalbroccoli.ViewModels
             Registration = new Registration();
         }
 
-        private void HandleAdd()
+        private async void HandleAdd()
         {
             Registration.Date = DateTime.Now;
+            var position = await _mapService.GetCurrentLocation();
+            Registration.Latitude = position.Latitude;
+            Registration.Longitude = position.Longitude;
+            Debug.WriteLine(Registration.Latitude);
+
             _registerService.Add(Registration);
-            _navigationService.NavigateAsync("/AppliMenu/NavigationPage/BrocoRegister");
+            await _navigationService.NavigateAsync("/AppliMenu/NavigationPage/BrocoRegister");
         }
 
         private async void HandleTakePicture()

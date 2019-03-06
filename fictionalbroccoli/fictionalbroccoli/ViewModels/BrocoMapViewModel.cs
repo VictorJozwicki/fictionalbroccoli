@@ -35,11 +35,10 @@ namespace fictionalbroccoli.ViewModels
 
         public async void CreateMap()
         {
-            Map = _mapService.getMap();
+            Map = _mapService.GetMap();
             var position = await _mapService.GetCurrentLocation();
             Debug.WriteLine(position);
-            _mapService.addPin(new Xamarin.Forms.Maps.Position(position.Latitude, position.Longitude));
+            _mapService.AddPin(position);
         }
-
     }
 }

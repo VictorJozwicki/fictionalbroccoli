@@ -10,6 +10,7 @@ using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using Xamarin.Forms;
 using System.Diagnostics;
+using Xamarin.Forms.Maps;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -55,6 +56,19 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _imageSrc, value); }
         }
 
+        public double _latitude;
+        public double Latitude
+        {
+            get { return _latitude; }
+            set { SetProperty(ref _latitude, value); }
+        }
+        public double _longitude;
+        public double Longitude
+        {
+            get { return _longitude; }
+            set { SetProperty(ref _longitude, value); }
+        }
+
         public DelegateCommand CommandDelete { get; private set; }
         public DelegateCommand CommandGoUpdate { get; private set; }
 
@@ -82,16 +96,18 @@ namespace fictionalbroccoli.ViewModels
         public override void OnNavigatingTo(INavigationParameters parameters)
         {
             base.OnNavigatingTo(parameters);
+
             _registration = parameters.GetValue<Registration>("Registration");
+
             Name = _registration.Name;
             Description = _registration.Description;
             Tag = _registration.Tag;
             ImageSrc = ImageSource.FromFile(_registration.ImagePath);
-            // If today then output string today and test with Date.now == Date
             DateTime date = _registration.Date;
             Date = String.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));
-            // On veut l'heure quand c'est aujourd'hui sinon la date
-
+            Latitude = _registration.Latitude;
+            Longitude = _registration.Longitude;
+            Debug.WriteLine(Latitude);
         }
 
         private void HandleDelete()

@@ -7,10 +7,10 @@ namespace fictionalbroccoli.Services
 {
     public interface IMapService
     {
-        Task<Plugin.Geolocator.Abstractions.Position> GetCurrentLocation();
+        Task<Xamarin.Forms.Maps.Position> GetCurrentLocation();
         bool IsLocationAvailable();
-        void createMap();
-        Map getMap();
-        void addPin(Xamarin.Forms.Maps.Position position);
+        void CreateMap();
+        Map GetMap();
+        void AddPin(Xamarin.Forms.Maps.Position position);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using Xamarin.Forms.Maps;
 
 namespace fictionalbroccoli.Models
 {
@@ -10,6 +11,8 @@ namespace fictionalbroccoli.Models
         public string Tag { get; set; }
         public string ImagePath { get; set; }
         public DateTime Date { get; set; }
+        public double Latitude { get; set; }
+        public double Longitude { get; set; }
 
         public string DateText { get; set; }
 
