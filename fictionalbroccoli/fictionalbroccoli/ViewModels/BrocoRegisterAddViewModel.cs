@@ -58,7 +58,10 @@ namespace fictionalbroccoli.ViewModels
             var position = await _mapService.GetCurrentLocation();
             Registration.Latitude = position.Latitude;
             Registration.Longitude = position.Longitude;
-            Debug.WriteLine(Registration.Latitude);
+
+            var address = await _mapService.GetCurrentAddress(position);
+            Debug.WriteLine(address);
+            Registration.Address = address;
 
             _registerService.Add(Registration);
             await _navigationService.NavigateAsync("/AppliMenu/NavigationPage/BrocoRegister");

@@ -56,11 +56,18 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _imageSrc, value); }
         }
 
-        public string _cordinate;
-        public string Cordinate
+        public string _coordinate;
+        public string Coordinate
         {
-            get { return _cordinate; }
-            set { SetProperty(ref _cordinate, value); }
+            get { return _coordinate; }
+            set { SetProperty(ref _coordinate, value); }
+        }
+
+        public string _address;
+        public string Address
+        {
+            get { return _address; }
+            set { SetProperty(ref _address, value); }
         }
 
         public DelegateCommand CommandDelete { get; private set; }
@@ -98,8 +105,9 @@ namespace fictionalbroccoli.ViewModels
             Tag = _registration.Tag;
             ImageSrc = ImageSource.FromFile(_registration.ImagePath);
             DateTime date = _registration.Date;
-            Date = string.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));
-            Cordinate = "" + _registration.Latitude + " - " + _registration.Longitude;
+            Date = "Photo prise le " + date.ToString("d") + " à " + date.ToString("t");
+            Coordinate = "" + _registration.Latitude + " - " + _registration.Longitude;
+            Address = _registration.Address;
             Debug.WriteLine(Cordinate);
         }
 

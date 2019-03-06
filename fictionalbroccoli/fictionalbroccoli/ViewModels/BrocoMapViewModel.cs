@@ -45,8 +45,12 @@ namespace fictionalbroccoli.ViewModels
         public async void CreateMap()
         {
             Map = _mapService.GetMap();
-            var position = await _mapService.GetCurrentLocation();
-            Debug.WriteLine(position);
+
+            //var position = await _mapService.GetCurrentLocation();
+            //Debug.WriteLine(position);
+            //var address = await _mapService.GetCurrentAddress(position);
+            //Debug.WriteLine(address);
+
             var registrations = _registerService.GetAll();
             _mapService.clearPins();
             foreach (Registration registration in registrations)

@@ -16,6 +16,8 @@ namespace fictionalbroccoli.Services
             set;
         }
 
+        IGeolocator locator;
+
         public MapService()
         {
             CreateMap();
@@ -24,9 +26,10 @@ namespace fictionalbroccoli.Services
         public async void CreateMap()
         {
             var currentPosition = await GetCurrentLocation();
+            var xamPositon = new Xamarin.Forms.Maps.Position(currentPosition.Latitude, currentPosition.Longitude);
 
             Map = new Map(MapSpan.FromCenterAndRadius(
-                currentPosition,
+                xamPositon,
                 Distance.FromMiles(0.3)))
             {
                 IsShowingUser = true,
@@ -34,30 +37,39 @@ namespace fictionalbroccoli.Services
             };
         }
 
-        public async Task<Xamarin.Forms.Maps.Position> GetCurrentLocation()
+        public async Task<string> GetCurrentAddress(Plugin.Geolocator.Abstractions.Position position)
         {
-            var position = new Xamarin.Forms.Maps.Position(0, 0);
+            locator = CrossGeolocator.Current;
+            locator.DesiredAccuracy = 100;
+            var addresses = await locator.GetAddressesForPositionAsync(position);
+            foreach(Address address in addresses)
+            {
+                if (address != null)
+                    return address.Thoroughfare + " " + address.Locality + " " + address.PostalCode + " " + address.CountryName;
+            }
 
+            return "";
+        }
+
+
+        public async Task<Plugin.Geolocator.Abstractions.Position> GetCurrentLocation()
+        {
             try
             {
-                var locator = CrossGeolocator.Current;
+                locator = CrossGeolocator.Current;
                 locator.DesiredAccuracy = 100;
                 if (!locator.IsGeolocationAvailable || !locator.IsGeolocationEnabled)
-                {
-                    return position;
-                }
+                    return null;
 
                 var currentPosition = await locator.GetLastKnownLocationAsync();
 
-                if (currentPosition != null)
-                {
-                    return new Xamarin.Forms.Maps.Position(currentPosition.Latitude, currentPosition.Longitude);
-                }
-
-                currentPosition = await locator.GetPositionAsync(TimeSpan.FromSeconds(20));
-
                 if (currentPosition == null)
-                    return position;
+                {
+                    currentPosition = await locator.GetPositionAsync(TimeSpan.FromSeconds(20));
+                }
+                    
+                if (currentPosition == null)
+                    return null;
 
                 var output = string.Format("Time: {0} \nLat: {1} \nLong: {2} \nAltitude: {3} \nAltitude Accuracy: {4} \nAccuracy: {5} \nHeading: {6} \nSpeed: {7}",
                         currentPosition.Timestamp, currentPosition.Latitude, currentPosition.Longitude,
@@ -65,14 +77,13 @@ namespace fictionalbroccoli.Services
 
                 Debug.WriteLine(output);
 
-                return new Xamarin.Forms.Maps.Position(currentPosition.Latitude, currentPosition.Longitude);
+                return new Plugin.Geolocator.Abstractions.Position(currentPosition.Latitude, currentPosition.Longitude);
             }
             catch (Exception ex)
             {
                 Debug.WriteLine("Unable to get location: " + ex);
+                return null;
             }
-
-            return position;
         }
 
         public void clearPins()
