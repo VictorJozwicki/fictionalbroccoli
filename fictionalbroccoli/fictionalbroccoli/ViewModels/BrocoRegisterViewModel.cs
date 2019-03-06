@@ -5,6 +5,7 @@ using Prism.Navigation;
 using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using System.Collections.ObjectModel;
+using System.Collections.Generic;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -22,6 +23,13 @@ namespace fictionalbroccoli.ViewModels
         {
             get { return _registrations;  }
             set { SetProperty(ref _registrations, value);  }
+        }
+
+        private ObservableCollection<String> _tags;
+        public ObservableCollection<String> Tags
+        {
+            get { return _tags; }
+            set { SetProperty(ref _tags, value); }
         }
 
         // Sorting
@@ -54,6 +62,8 @@ namespace fictionalbroccoli.ViewModels
 
             _navigationService = navigationService;
             _registerService = registerService;
+
+            Tags = new ObservableCollection<String>() { "#factorio", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame" };
         }
 
         public override void OnNavigatedTo(INavigationParameters parameters)
