@@ -106,7 +106,7 @@
         </StackLayout>
         
         <!--List-->
-        <ListView x:Name="ListRegister" ItemsSource="{Binding Registrations}" HasUnevenRows="True" SelectionMode="Single">
+        <ListView x:Name="ListRegister" ItemsSource="{Binding Registrations}" HasUnevenRows="True" SelectionMode="Single" SeparatorColor="Transparent">
             <ListView.Behaviors>
                 <b:EventToCommandBehavior EventName="ItemTapped" Command="{Binding CommandGoDetail}" EventArgsParameterPath="Item" />
             </ListView.Behaviors>
