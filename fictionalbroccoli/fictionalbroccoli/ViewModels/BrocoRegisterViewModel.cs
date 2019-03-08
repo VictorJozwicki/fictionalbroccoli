@@ -86,15 +86,16 @@ namespace fictionalbroccoli.ViewModels
 
         public void HandleSearch()
         {
-            if(String.IsNullOrEmpty(SearchText)) // If null reset
+            FilterTagList.Clear();
+
+            if (String.IsNullOrEmpty(SearchText)) // If null reset
             {
                 InitOrReset();
             }
             else // If there is a SearchText
             {
-                Registrations = new ObservableCollection<Registration>(
-                    _registerService.Search(SearchText));
-                DoDate();
+                Registrations = new ObservableCollection<Registration>(_registerService.Search(SearchText));
+                DateFormat();
             }
         }
 
@@ -112,37 +113,45 @@ namespace fictionalbroccoli.ViewModels
             _navigationService.NavigateAsync("BrocoRegisterDetail", navigationParam);
         }
 
-        private void HandleTag(string text)
+        private void HandleTag(string tag)
         {
-            Console.WriteLine("Text is " + text);
-            if(FilterTagList.Contains(text)) // If it contains, it deletes
+            if(FilterTagList.Contains(tag)) // If it contains it already, it deletes it
             {
-                Console.WriteLine("Contains " + text + "deleting");
-                FilterTagList.Remove(text);
+                FilterTagList.Remove(tag);
             }
-            else // First time
+            else
             {
-                Console.WriteLine("Does not contain " + text + ", adding");
-                FilterTagList.Add(text);
-                // Filter it here (use linq maybe or something)
+                FilterTagList.Add(tag);
             }
 
-            // Filter the list
-            if(!FilterTagList.Any())
+            // If there is nothing, we reset it to normal behaviour
+            if (!FilterTagList.Any())
             {
-                Console.WriteLine("Empty list, resetting");
                 InitOrReset();
+                return;
             }
+            // Iterate through the tagList to add everything that exist with the tag list
+            var newFilteredWithTag = new List<Registration>();
+            foreach (var elem in FilterTagList)
+            {
+                var temp = new ObservableCollection<Registration>(_registerService.SearchTag(elem));
+                foreach (var newElem in temp)
+                {
+                    newFilteredWithTag.Add(newElem);
+                }
+            }
+            Registrations = new ObservableCollection<Registration>(newFilteredWithTag);
+            DateFormat();
         }
 
         private void InitOrReset()
         {
             Registrations = new ObservableCollection<Registration>(_registerService.GetAll());
-            DoDate();
+            DateFormat();
             SortUp();
         }
 
-        private void DoDate()
+        private void DateFormat()
         {
             foreach (Registration registration in Registrations)
             {

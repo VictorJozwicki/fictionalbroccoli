@@ -12,5 +12,6 @@ namespace fictionalbroccoli.Services
         void Add(Registration registration);
         void Update(Registration registration);
         List<Registration> Search(string text);
+        List<Registration> SearchTag(string elem);
     }
 }

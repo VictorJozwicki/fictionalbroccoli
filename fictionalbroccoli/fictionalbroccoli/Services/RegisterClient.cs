@@ -70,8 +70,23 @@ namespace fictionalbroccoli.Services
 
                 var searchRegistrations = collection.Find(
                     registration => 
-                        registration.Tag.Contains(text)
-                        || registration.Name.Contains(text)
+                        registration.Tag.ToLower().Contains(text)
+                        || registration.Name.ToLower().Contains(text)
+                    ).ToList();
+
+                return searchRegistrations;
+            }
+        }
+
+        public List<Registration> SearchTag(string tag)
+        {
+            using (var db = new LiteDatabase(DbPath))
+            {
+                var collection = db.GetCollection<Registration>("Registrations");
+
+                var searchRegistrations = collection.Find(
+                    registration =>
+                        registration.Tag.ToLower().Contains(tag)
                     ).ToList();
 
                 return searchRegistrations;

@@ -45,6 +45,11 @@ namespace fictionalbroccoli.Services
            return _registerClient.Search(text);
         }
 
+        public List<Registration> SearchTag(string tag)
+        {
+            return _registerClient.SearchTag(tag);
+        }
+
         /*
          * Populate the database     
          */
