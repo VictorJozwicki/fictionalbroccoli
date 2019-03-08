@@ -10,6 +10,7 @@ using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using Xamarin.Forms;
 using System.Diagnostics;
+using Xamarin.Forms.Maps;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -55,6 +56,20 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _imageSrc, value); }
         }
 
+        public string _coordinate;
+        public string Coordinate
+        {
+            get { return _coordinate; }
+            set { SetProperty(ref _coordinate, value); }
+        }
+
+        public string _address;
+        public string Address
+        {
+            get { return _address; }
+            set { SetProperty(ref _address, value); }
+        }
+
         public DelegateCommand CommandDelete { get; private set; }
         public DelegateCommand CommandGoUpdate { get; private set; }
 
@@ -69,7 +84,7 @@ namespace fictionalbroccoli.ViewModels
             _registerService = registerService;
             _dialogService = dialogService;
             Title = "Enregistrement";
-            CommandDelete =  new DelegateCommand(HandleDelete);
+            CommandDelete = new DelegateCommand(HandleDelete);
             CommandGoUpdate = new DelegateCommand(HandleGoUpdate);
 
         }
@@ -82,16 +97,20 @@ namespace fictionalbroccoli.ViewModels
         public override void OnNavigatingTo(INavigationParameters parameters)
         {
             base.OnNavigatingTo(parameters);
+
             _registration = parameters.GetValue<Registration>("Registration");
+
             Name = _registration.Name;
             Description = _registration.Description;
             Tag = _registration.Tag;
             ImageSrc = ImageSource.FromFile(_registration.ImagePath);
-            // If today then output string today and test with Date.now == Date
             DateTime date = _registration.Date;
-            Date = String.Concat("Photo prise le ", date.ToString("d"), " à ", date.ToString("t"));
-            // On veut l'heure quand c'est aujourd'hui sinon la date
-
+            Date = "Photo prise le " + date.ToString("d") + " à " + date.ToString("t");
+            Coordinate = "" + _registration.Latitude + " - " + _registration.Longitude;
+            Address = _registration.Address;
+            if (string.IsNullOrEmpty(Address))
+                Address = "Pas d'adresse connue";
+            Debug.WriteLine(Coordinate);
         }
 
         private void HandleDelete()
