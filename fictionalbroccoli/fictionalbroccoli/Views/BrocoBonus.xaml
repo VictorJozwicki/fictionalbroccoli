@@ -4,6 +4,6 @@
              Title="{Binding Title}"
              x:Class="fictionalbroccoli.Views.BrocoBonus">
     <StackLayout>
-        <Label Text="The broco bonus page !"/>
+        <Label Text="On a passé 10h à essayer de configurer la map :( pas de bonus"/>
     </StackLayout>
 </ContentPage>

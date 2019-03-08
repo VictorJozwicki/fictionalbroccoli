@@ -13,7 +13,7 @@ namespace fictionalbroccoli.ViewModels
     {
         public BrocoBonusViewModel(INavigationService navigationService) : base(navigationService)
         {
-            Title = "Bonus";
+            Title = "Pas Bonus";
         }
     }
 }
