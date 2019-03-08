@@ -3,10 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
              x:Class="fictionalbroccoli.Views.BrocoRegisterDetail">
-    
     <Application.Resources>
         <ResourceDictionary>
-            
             <!--Labels-->
             <Style x:Key="name" TargetType="Label">
                 <Setter Property="Font" Value="Bold, 30"/>

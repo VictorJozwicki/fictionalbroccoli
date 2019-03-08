@@ -17,6 +17,8 @@ namespace fictionalbroccoli.ViewModels
         public DelegateCommand<Registration> CommandSortUp { get; private set; }
         public DelegateCommand<Registration> CommandSortDown { get; private set; }
         public DelegateCommand<Registration> CommandSort { get; private set; }
+        public DelegateCommand<String> CommandTag { get; private set; }
+
 
         private ObservableCollection<Registration> _registrations;
         public ObservableCollection<Registration> Registrations
@@ -59,12 +61,15 @@ namespace fictionalbroccoli.ViewModels
             Title = "Enregistrements";
             CommandGoDetail = new DelegateCommand<Registration>(HandleDetail);
             CommandSort = new DelegateCommand<Registration>(HandleSort);
+            CommandTag = new DelegateCommand<string>(HandleTag);
 
             _navigationService = navigationService;
             _registerService = registerService;
 
             Tags = new ObservableCollection<String>() { "#factorio", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame" };
         }
+
+
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
@@ -79,13 +84,17 @@ namespace fictionalbroccoli.ViewModels
             SortUp();
         }
 
-
         // Handlers
         private void HandleDetail(Registration selectedRegistration)
         {
             var navigationParam = new NavigationParameters();
             navigationParam.Add("Registration", selectedRegistration);
             _navigationService.NavigateAsync("BrocoRegisterDetail", navigationParam);
+        }
+
+        private void HandleTag(string text)
+        {
+            Console.WriteLine(text);
         }
 
         private void HandleSort(Registration obj)
@@ -124,7 +133,13 @@ namespace fictionalbroccoli.ViewModels
             DateTime today = DateTime.Now;
             TimeSpan diff = today.Subtract(date);
 
-            if (diff.Days >= 1)
+            Console.WriteLine(diff.Days % 30);
+
+            if (diff.Days / 365 >= 1)
+                return String.Concat(DateText, diff.Days / 365, " ans");
+            else if (diff.Days / 30 >= 1)
+                return String.Concat(DateText, diff.Days / 30, " mois");
+            else if (diff.Days >= 1)
                 return String.Concat(DateText, diff.Days, " jours");
             else if (diff.Hours >= 1)
                 return String.Concat(DateText, diff.Hours, " heures");

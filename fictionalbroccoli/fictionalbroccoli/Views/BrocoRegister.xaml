@@ -91,9 +91,9 @@
         <StackLayout Style="{StaticResource upperButtons}">
             <!--Tags-->
             <StackLayout Style="{StaticResource leftButtons}">
-                <Button Text="#drink" Style="{StaticResource tagButton}"/>
-                <Button Text="#Food" Style="{StaticResource tagButton}"/>
-                <Button Text="#VideoGame" Style="{StaticResource tagButton}"/>
+                <Button Text="#drink" Style="{StaticResource tagButton}" Command="{Binding CommandTag}" CommandParameter="#drink"/>
+                <Button Text="#food" Style="{StaticResource tagButton}" Command="{Binding CommandTag}" CommandParameter="#food"/>
+                <Button Text="#factorio" Style="{StaticResource tagButton}" Command="{Binding CommandTag}" CommandParameter="#factorio"/>
             </StackLayout>
             <!--Sort-->
             <StackLayout Style="{StaticResource sortButton}">
