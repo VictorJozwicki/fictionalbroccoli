@@ -25,16 +25,20 @@ namespace fictionalbroccoli.Services
 
         public async void CreateMap()
         {
-            var currentPosition = await GetCurrentLocation();
-            var xamPositon = new Xamarin.Forms.Maps.Position(currentPosition.Latitude, currentPosition.Longitude);
-
             Map = new Map(MapSpan.FromCenterAndRadius(
-                xamPositon,
-                Distance.FromMiles(0.3)))
+                new Xamarin.Forms.Maps.Position(0, 0),
+                Distance.FromMiles(1)))
             {
                 IsShowingUser = true,
                 VerticalOptions = LayoutOptions.FillAndExpand
             };
+
+            var currentPosition = await GetCurrentLocation();
+            var xamPositon = new Xamarin.Forms.Maps.Position(currentPosition.Latitude, currentPosition.Longitude);
+
+            Map.MoveToRegion(
+                MapSpan.FromCenterAndRadius(
+                xamPositon, Distance.FromMiles(1)));
         }
 
         public async Task<string> GetCurrentAddress(Plugin.Geolocator.Abstractions.Position position)
@@ -42,7 +46,7 @@ namespace fictionalbroccoli.Services
             locator = CrossGeolocator.Current;
             locator.DesiredAccuracy = 100;
             var addresses = await locator.GetAddressesForPositionAsync(position);
-            foreach(Address address in addresses)
+            foreach (Address address in addresses)
             {
                 if (address != null)
                     return address.Thoroughfare + " " + address.Locality + " " + address.PostalCode + " " + address.CountryName;

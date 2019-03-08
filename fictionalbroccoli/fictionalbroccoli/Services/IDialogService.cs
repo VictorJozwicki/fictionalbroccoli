@@ -10,5 +10,7 @@ namespace fictionalbroccoli.Services
             string message,
             Action<bool> callback
             );
+
+        Task chooseBetween(string title, string[] buttons, Action<string> callback);
     }
 }
