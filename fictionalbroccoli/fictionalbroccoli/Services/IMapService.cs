@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using fictionalbroccoli.Models;
 using Plugin.Geolocator.Abstractions;
 using Xamarin.Forms.Maps;
 
@@ -13,6 +14,7 @@ namespace fictionalbroccoli.Services
         void CreateMap();
         Map GetMap();
         void clearPins();
-        void AddPin(double latitude, double longitude, string text, EventHandler evnt);
+        void AddPin(Registration registration, EventHandler evnt);
+        Task RequestLocationPermission();
     }
 }

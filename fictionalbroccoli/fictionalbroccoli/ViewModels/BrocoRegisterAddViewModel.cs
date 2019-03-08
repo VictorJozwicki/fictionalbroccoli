@@ -81,7 +81,7 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleAdd()
         {
-            _dialogService.ShowMessage("Attention", "Êtes-vous sûr de vouloir modifier cet item ?", async (res) =>
+            _dialogService.ShowMessage("Attention", "Êtes-vous sûr de vouloir ajouter cet item ?", async (res) =>
             {
                 if (res)
                 {

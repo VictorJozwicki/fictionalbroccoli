@@ -11,5 +11,6 @@ namespace fictionalbroccoli.Services
         void Delete(int id);
         void Add(Registration registration);
         void Update(Registration registration);
+        List<Registration> Search(string text);
     }
 }

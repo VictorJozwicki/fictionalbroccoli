@@ -12,6 +12,8 @@ using Plugin.Geolocator;
 using System.Diagnostics;
 using fictionalbroccoli.Services;
 using fictionalbroccoli.Models;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -44,12 +46,13 @@ namespace fictionalbroccoli.ViewModels
 
         public async void CreateMap()
         {
+            await _mapService.RequestLocationPermission();
+            if (!_mapService.IsLocationAvailable())
+            {
+                return;
+            }
+            _mapService.CreateMap();
             Map = _mapService.GetMap();
-
-            //var position = await _mapService.GetCurrentLocation();
-            //Debug.WriteLine(position);
-            //var address = await _mapService.GetCurrentAddress(position);
-            //Debug.WriteLine(address);
 
             var registrations = _registerService.GetAll();
             _mapService.clearPins();
@@ -66,7 +69,7 @@ namespace fictionalbroccoli.ViewModels
                         navigationParam.Add("Registration", registration);
                         await _navigationService.NavigateAsync("BrocoRegisterDetail", navigationParam);
                     });
-                    _mapService.AddPin(registration.Latitude, registration.Longitude, registration.Name, evnt);
+                    _mapService.AddPin(registration, evnt);
 
                 }
             }

@@ -40,6 +40,11 @@ namespace fictionalbroccoli.Services
             _registerClient.Update(registration);
         }
 
+        public List<Registration> Search(string text)
+        {
+           return _registerClient.Search(text);
+        }
+
         /*
          * Populate the database     
          */

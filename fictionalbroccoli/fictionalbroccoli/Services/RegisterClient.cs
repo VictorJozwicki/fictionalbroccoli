@@ -61,5 +61,21 @@ namespace fictionalbroccoli.Services
                 collection.Update(registration);
             }
         }
+
+        public List<Registration> Search(string text)
+        {
+            using (var db = new LiteDatabase(DbPath))
+            {
+                var collection = db.GetCollection<Registration>("Registrations");
+
+                var searchRegistrations = collection.Find(
+                    registration => 
+                        registration.Tag.Contains(text)
+                        || registration.Name.Contains(text)
+                    ).ToList();
+
+                return searchRegistrations;
+            }
+        }
     }
 }

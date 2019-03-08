@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
 using System.Threading.Tasks;
+using fictionalbroccoli.Models;
 using Plugin.Geolocator;
 using Plugin.Geolocator.Abstractions;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
 using Xamarin.Forms.Maps;
 
@@ -25,9 +28,11 @@ namespace fictionalbroccoli.Services
 
         public async void CreateMap()
         {
+
+
             Map = new Map(MapSpan.FromCenterAndRadius(
                 new Xamarin.Forms.Maps.Position(0, 0),
-                Distance.FromMiles(1)))
+                Distance.FromMiles(0.5)))
             {
                 IsShowingUser = true,
                 VerticalOptions = LayoutOptions.FillAndExpand
@@ -36,9 +41,14 @@ namespace fictionalbroccoli.Services
             var currentPosition = await GetCurrentLocation();
             var xamPositon = new Xamarin.Forms.Maps.Position(currentPosition.Latitude, currentPosition.Longitude);
 
+            moveTo(xamPositon);
+        }
+
+        public void moveTo(Xamarin.Forms.Maps.Position position)
+        {
             Map.MoveToRegion(
                 MapSpan.FromCenterAndRadius(
-                xamPositon, Distance.FromMiles(1)));
+                position, Distance.FromMiles(0.5)));
         }
 
         public async Task<string> GetCurrentAddress(Plugin.Geolocator.Abstractions.Position position)
@@ -66,6 +76,7 @@ namespace fictionalbroccoli.Services
                 if (!locator.IsGeolocationAvailable || !locator.IsGeolocationEnabled)
                     return notAPosition;
 
+                //Plugin.Geolocator.Abstractions.Position currentPosition = null;
                 var currentPosition = await locator.GetLastKnownLocationAsync();
 
                 if (currentPosition == null)
@@ -96,14 +107,14 @@ namespace fictionalbroccoli.Services
             Map.Pins.Clear();
         }
 
-        public void AddPin(double latitude, double longitude, string text, EventHandler evnt)
+        public void AddPin(Registration registration, EventHandler evnt)
         {
             var pin = new Pin
             {
                 Type = PinType.Place,
-                Position = new Xamarin.Forms.Maps.Position(latitude, longitude),
-                Label = "This is a pin !",
-                Address = text
+                Position = new Xamarin.Forms.Maps.Position(registration.Latitude, registration.Longitude),
+                Label = registration.Name,
+                Address = registration.Description
             };
             pin.Clicked += evnt;
             Map.Pins.Add(pin);
@@ -120,6 +131,36 @@ namespace fictionalbroccoli.Services
         public Map GetMap()
         {
             return Map;
+        }
+
+        public async Task RequestLocationPermission()
+        {
+            try
+            {
+                var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Location);
+                if (status != PermissionStatus.Granted)
+                {
+                    if (await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Location))
+                    {
+                        await App.Current.MainPage.DisplayAlert("Permissions", "Nous avons besoin de votre localisation pour ce service", "OK");
+                    }
+
+                    var results = await CrossPermissions.Current.RequestPermissionsAsync(new[] { Permission.Location });
+                    status = results[Permission.Location];
+                }
+
+                if (status == PermissionStatus.Granted)
+                {
+                }
+                else if (status != PermissionStatus.Unknown)
+                {
+                    await App.Current.MainPage.DisplayAlert("Permission refusée", "Impossible de continuer...", "OK");
+                }
+            }
+            catch (Exception ex)
+            {
+                await App.Current.MainPage.DisplayAlert("Permission refusée", "Impossible de continuer...", "OK");
+            }
         }
     }
 }

@@ -92,8 +92,8 @@ namespace fictionalbroccoli.ViewModels
             }
             else // If there is a SearchText
             {
-                // On the GetAll() we do the contains on tag and name
-                Registrations = new ObservableCollection<Registration>(_registerService.GetAll().Where(registration => registration.Tag.ToLower().Contains(SearchText) || registration.Name.ToLower().Contains(SearchText)));
+                Registrations = new ObservableCollection<Registration>(
+                    _registerService.Search(SearchText));
                 DoDate();
             }
         }
