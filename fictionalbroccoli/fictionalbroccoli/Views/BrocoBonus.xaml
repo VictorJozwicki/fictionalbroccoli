@@ -3,7 +3,18 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              Title="{Binding Title}"
              x:Class="fictionalbroccoli.Views.BrocoBonus">
-    <StackLayout>
-        <Label Text="On a passé 10h à essayer de configurer la map :( pas de bonus"/>
+    <Application.Resources>
+        <ResourceDictionary>
+            <Style x:Key="text" TargetType="Label">
+                <Setter Property="Font" Value="Large"/>
+                <Setter Property="TextColor" Value="{StaticResource lighterFont}"/>
+            </Style>
+        </ResourceDictionary>
+    </Application.Resources>
+    <StackLayout Margin="50">
+        <Label Text="Bonus" Font="50" TextColor="{StaticResource normalFont}"/>
+        <Label Text="- Recherche (fonctione avec le nom ou le tag)" Style="{StaticResource text}"/>
+        <Label Text="- Un design magnifique et rafraichissant" Style="{StaticResource text}"/>
+        <Label Text="On a passé 10h à essayer de configurer la map :(" TextColor="{StaticResource thirdFont}"/>
     </StackLayout>
 </ContentPage>
