@@ -6,6 +6,7 @@ using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -23,8 +24,8 @@ namespace fictionalbroccoli.ViewModels
         private ObservableCollection<Registration> _registrations;
         public ObservableCollection<Registration> Registrations
         {
-            get { return _registrations;  }
-            set { SetProperty(ref _registrations, value);  }
+            get { return _registrations; }
+            set { SetProperty(ref _registrations, value); }
         }
 
         private ObservableCollection<String> _tags;
@@ -55,6 +56,13 @@ namespace fictionalbroccoli.ViewModels
             set { SetProperty(ref _sortRecent, value); }
         }
 
+        private List<String> _filterTagList = new List<string>();
+        public List<String> FilterTagList
+        {
+            get { return _filterTagList; }
+            set { SetProperty(ref _filterTagList, value); }
+        }
+
         // Functions
         public BrocoRegisterViewModel(INavigationService navigationService, IRegisterService registerService) : base(navigationService)
         {
@@ -73,15 +81,9 @@ namespace fictionalbroccoli.ViewModels
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            Registrations = new ObservableCollection<Registration>(_registerService.GetAll());
+            InitOrReset();
 
-            foreach(Registration registration in Registrations)
-            {
-                registration.DateText = ConvertDateToHumanText(registration.Date);
-                if (registration.ImagePath == null)
-                    registration.ImagePath = "greenbox.png";
-            }
-            SortUp();
+
         }
 
         // Handlers
@@ -95,6 +97,36 @@ namespace fictionalbroccoli.ViewModels
         private void HandleTag(string text)
         {
             Console.WriteLine(text);
+            if(FilterTagList.Contains(text)) // If it contains, it deletes
+            {
+                Console.WriteLine("Contains " + text + "deleting");
+                FilterTagList.Remove(text);
+            }
+            else // First time
+            {
+                Console.WriteLine("Does not contain " + text + ", adding");
+                FilterTagList.Add(text);
+                // Filter it here (use linq maybe or something)
+            }
+
+            // Filter the list
+            if(!FilterTagList.Any())
+            {
+                Console.WriteLine("Empty list, resetting");
+                InitOrReset();
+            }
+        }
+
+        private void InitOrReset()
+        {
+            Registrations = new ObservableCollection<Registration>(_registerService.GetAll());
+            foreach (Registration registration in Registrations)
+            {
+                registration.DateText = ConvertDateToHumanText(registration.Date);
+                if (registration.ImagePath == null)
+                    registration.ImagePath = "greenbox.png";
+            }
+            SortUp();
         }
 
         private void HandleSort(Registration obj)
@@ -148,12 +180,5 @@ namespace fictionalbroccoli.ViewModels
             else
                 return String.Concat(DateText, diff.Seconds, " secondes");
         }
-
-
-        // Lors d'un click sur un tag, l'ajouter ou le supprimer s'il est dedans, à une liste
-        // Avant d'afficher la liste, faire un filtre sur Registrations et l'update
-        // Registrations = new ObservableCollection<Registration>();
-        // 
-
     }
 }
