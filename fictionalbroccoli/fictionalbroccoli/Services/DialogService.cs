@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Prism.Services;
 using Xamarin.Forms;
 
 namespace fictionalbroccoli.Services
 {
     public class DialogService : IDialogService
     {
-        public DialogService()
+        IPageDialogService _pageDialogService;
+        public DialogService(IPageDialogService pageDialogService)
         {
+            _pageDialogService = pageDialogService;
         }
 
         public async Task ShowMessage(string title, string message, Action<bool> callback)
@@ -17,10 +20,18 @@ namespace fictionalbroccoli.Services
                 message,
                 "VALIDER",
                 "ANNULER");
-            if (callback != null)
-            {
-                callback(res);
-            }
+            callback?.Invoke(res);
+        }
+
+        public async Task chooseBetween(string title, string[] buttons, Action<string> callback)
+        {
+            var res = await _pageDialogService.DisplayActionSheetAsync(
+                title,
+                "Annuler",
+                "Quitter",
+                buttons
+                );
+            callback?.Invoke(res);
         }
     }
 }

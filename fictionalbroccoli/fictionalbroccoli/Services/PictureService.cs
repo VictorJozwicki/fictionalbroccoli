@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Threading.Tasks;
 using Plugin.Media;
 using Plugin.Media.Abstractions;
+using Prism.Services;
 using Xamarin.Forms;
 
 namespace fictionalbroccoli.Services
@@ -11,9 +12,61 @@ namespace fictionalbroccoli.Services
     {
         public Image CurrentImage = new Image();
 
-        public PictureService()
-        {
+        IPageDialogService _pageDialogService;
 
+        public PictureService(
+            IPageDialogService pageDialogService
+            )
+        {
+            _pageDialogService = pageDialogService;
+        }
+
+        public async Task<MediaFile> PickOrTakePhotoAsync()
+        {
+            string[] Buttons = new string[2];
+            Buttons[0] = "Gallerie";
+            Buttons[1] = "Prendre";
+            MediaFile file;
+
+            var res = await _pageDialogService.DisplayActionSheetAsync(
+               "Que voulez vous faire ?",
+               "Annuler",
+               "Quitter",
+               Buttons
+               );
+               
+                if (res == "Gallerie")
+                {
+                    file = await PickPhotoAsync();
+                } 
+                else
+                {
+                    file = await TakeFromCamera();
+                }
+
+            return file;
+        }
+
+        public async Task<MediaFile> PickPhotoAsync()
+        {
+            try
+            {
+                await CrossMedia.Current.Initialize();
+
+                if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
+                {
+                    Debug.WriteLine("No camera available.");
+                    return null;
+                }
+
+                MediaFile file = await CrossMedia.Current.PickPhotoAsync();
+                return file;
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error  == ", ex.Message);
+                return null;
+            }
         }
 
         public async Task<MediaFile> TakeFromCamera()
@@ -24,16 +77,13 @@ namespace fictionalbroccoli.Services
 
                 if (!CrossMedia.Current.IsCameraAvailable || !CrossMedia.Current.IsTakePhotoSupported)
                 {
-                    //await DisplayAlert("No Camera ", "No camera available. ", "OK");
                     Debug.WriteLine("No camera available.");
                     return null;
                 }
-                else
-                {
+                    
                     var mediaOptions = new Plugin.Media.Abstractions.StoreCameraMediaOptions
                     {
                         Directory = "Registrations",
-                        //Name = $"{DateTime.UtcNow}.jpg",
                         Name = "myphoto.jpg",
                         PhotoSize = PhotoSize.Medium,
                         CompressionQuality = 92,
@@ -41,18 +91,8 @@ namespace fictionalbroccoli.Services
 
                     MediaFile file = await CrossMedia.Current.TakePhotoAsync(mediaOptions);
 
-                    Debug.WriteLine(file);
+                    return file;
 
-                    Debug.WriteLine(ImageSource.FromStream(file.GetStream));
-
-                    if (file != null)
-                        return file;
-                    //CurrentImage.Source = ImageSource.FromStream(file.GetStream);
-
-
-                    Debug.WriteLine("File Location", file.Path);
-                    return null;
-                }
             }
             catch (Exception ex)
             {

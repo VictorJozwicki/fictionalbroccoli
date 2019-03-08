@@ -38,10 +38,10 @@
             <Button x:Name="CameraButton" Text="Prendre une photo" Command="{Binding CommandTakePicture}" />
             
             <StackLayout Style="{StaticResource inputStack}">
-                <Entry Text="{Binding Registration.Name}" Placeholder="Name"/>
-                <Entry Text="{Binding Registration.Description}" Placeholder="Description" />
+                <Entry Text="{Binding Name}" Placeholder="Name"/>
+                <Entry Text="{Binding Description}" Placeholder="Description" />
                 <Label Text="Tag" Margin="0, 20, 0, 0"/>
-                <Picker SelectedItem="{Binding Registration.Tag}">
+                <Picker SelectedItem="{Binding Tag}">
                     <Picker.Items>
                         <x:String>#drink</x:String>
                         <x:String>#food</x:String>

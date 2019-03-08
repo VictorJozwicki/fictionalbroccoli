@@ -5,6 +5,7 @@ using fictionalbroccoli.Services;
 using System.Diagnostics;
 using Plugin.Media.Abstractions;
 using Xamarin.Forms;
+using System;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -13,6 +14,7 @@ namespace fictionalbroccoli.ViewModels
         public INavigationService _navigationService;
         public IRegisterService _registerService;
         public IPictureService _pictureService;
+        public IDialogService _dialogService;
 
         public Registration _registration;
         public Registration Registration
@@ -31,12 +33,17 @@ namespace fictionalbroccoli.ViewModels
         public DelegateCommand CommandUpdate { get; private set; }
         public DelegateCommand CommandTakePicture { get; private set; }
 
-        public BrocoRegisterEditViewModel(INavigationService navigationService, IRegisterService registerService, IPictureService pictureService) : base(navigationService)
+        public BrocoRegisterEditViewModel(
+        INavigationService navigationService,
+            IRegisterService registerService,
+        IPictureService pictureService,
+            IDialogService dialogService) : base(navigationService)
         {
             Title = "Edit Register";
             _navigationService = navigationService;
             _registerService = registerService;
             _pictureService = pictureService;
+            _dialogService = dialogService;
             CommandTakePicture = new DelegateCommand(HandleTakePicture);
             CommandUpdate = new DelegateCommand(HandleUpdate);
         }
@@ -58,10 +65,26 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleUpdate()
         {
-            _registerService.Update(Registration);
-            var navigationParam = new NavigationParameters();
-            navigationParam.Add("Registration", Registration);
-            _navigationService.GoBackAsync(navigationParam);
+            _dialogService.ShowMessage("Attention", "Êtes-vous sûr de vouloir modifier cet item ?", (res) =>
+            {
+                if (res)
+                {
+                    _registerService.Update(Registration);
+                    var navigationParam = new NavigationParameters();
+                    navigationParam.Add("Registration", Registration);
+                    _navigationService.GoBackAsync(navigationParam);
+                }
+            });
+                
         }
+
+        //private Boolean CanExecuteAdd()
+        //{
+        //    Debug.WriteLine(string.IsNullOrEmpty(Name));
+
+        //    return !string.IsNullOrEmpty(Name)
+        //    && !string.IsNullOrEmpty(Description)
+        //    && !string.IsNullOrEmpty(Tag);
+        //}
     }
 }
