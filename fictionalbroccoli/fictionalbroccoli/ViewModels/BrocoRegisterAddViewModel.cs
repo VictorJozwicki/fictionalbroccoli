@@ -85,6 +85,7 @@ namespace fictionalbroccoli.ViewModels
             {
                 if (res)
                 {
+                    await _mapService.RequestLocationPermission();
                     Registration.Name = Name;
                     Registration.Description = Description;
                     Registration.Tag = Tag;

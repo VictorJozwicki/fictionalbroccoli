@@ -106,7 +106,10 @@ namespace fictionalbroccoli.ViewModels
             ImageSrc = ImageSource.FromFile(_registration.ImagePath);
             DateTime date = _registration.Date;
             Date = "Photo prise le " + date.ToString("d") + " à " + date.ToString("t");
-            Coordinate = "" + _registration.Latitude + " - " + _registration.Longitude;
+            if (_registration.Latitude > 0 && _registration.Longitude > 0)
+                Coordinate = "" + _registration.Latitude + " - " + _registration.Longitude;
+            else
+                Coordinate = "";
             Address = _registration.Address;
             if (string.IsNullOrEmpty(Address))
                 Address = "Pas d'adresse connue";

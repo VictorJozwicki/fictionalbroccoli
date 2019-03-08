@@ -28,7 +28,7 @@ namespace fictionalbroccoli.Services
 
         public async void CreateMap()
         {
-
+            //await RequestLocationPermission();
 
             Map = new Map(MapSpan.FromCenterAndRadius(
                 new Xamarin.Forms.Maps.Position(0, 0),
@@ -159,7 +159,7 @@ namespace fictionalbroccoli.Services
             }
             catch (Exception ex)
             {
-                await App.Current.MainPage.DisplayAlert("Permission refusée", "Impossible de continuer...", "OK");
+                await App.Current.MainPage.DisplayAlert("Permission refusée", "Impossible d'accéder à la localisation", "OK");
             }
         }
     }

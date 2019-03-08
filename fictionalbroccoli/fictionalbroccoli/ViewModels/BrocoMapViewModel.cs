@@ -58,7 +58,7 @@ namespace fictionalbroccoli.ViewModels
             _mapService.clearPins();
             foreach (Registration registration in registrations)
             {
-                if (registration.Latitude >= 0 && registration.Longitude >= 0)
+                if (registration.Latitude > 0 && registration.Longitude > 0)
                 {
                     var evnt = new EventHandler(async (object sender, EventArgs e) =>
                     {
