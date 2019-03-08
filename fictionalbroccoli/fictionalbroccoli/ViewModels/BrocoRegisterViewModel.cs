@@ -6,7 +6,6 @@ using fictionalbroccoli.Models;
 using fictionalbroccoli.Services;
 using System.Collections.ObjectModel;
 using System.Collections.Generic;
-using System.Linq;
 
 namespace fictionalbroccoli.ViewModels
 {
@@ -19,7 +18,7 @@ namespace fictionalbroccoli.ViewModels
         public DelegateCommand<Registration> CommandSortDown { get; private set; }
         public DelegateCommand<Registration> CommandSort { get; private set; }
         public DelegateCommand<String> CommandTag { get; private set; }
-
+        public DelegateCommand CommandSearch { get; private set; }
 
         private ObservableCollection<Registration> _registrations;
         public ObservableCollection<Registration> Registrations
@@ -33,6 +32,13 @@ namespace fictionalbroccoli.ViewModels
         {
             get { return _tags; }
             set { SetProperty(ref _tags, value); }
+        }
+
+        private string _searchText; // Search text
+        public string SearchText
+        {
+            get { return _searchText; }
+            set { SetProperty(ref _searchText, value); }
         }
 
         // Sorting
@@ -70,6 +76,7 @@ namespace fictionalbroccoli.ViewModels
             CommandGoDetail = new DelegateCommand<Registration>(HandleDetail);
             CommandSort = new DelegateCommand<Registration>(HandleSort);
             CommandTag = new DelegateCommand<string>(HandleTag);
+            CommandSearch = new DelegateCommand(HandleSearch);
 
             _navigationService = navigationService;
             _registerService = registerService;
@@ -77,13 +84,24 @@ namespace fictionalbroccoli.ViewModels
             Tags = new ObservableCollection<String>() { "#factorio", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame", "#drink", "#videogame" };
         }
 
+        public void HandleSearch()
+        {
+            if(String.IsNullOrEmpty(SearchText)) // If null reset
+            {
+                InitOrReset();
+            }
+            else // If there is a SearchText
+            {
+                // On the GetAll() we do the contains on tag and name
+                Registrations = new ObservableCollection<Registration>(_registerService.GetAll().Where(registration => registration.Tag.ToLower().Contains(SearchText) || registration.Name.ToLower().Contains(SearchText)));
+                DoDate();
+            }
+        }
 
 
         public override void OnNavigatedTo(INavigationParameters parameters)
         {
-            InitOrReset();
-
-
+            InitOrReset(); 
         }
 
         // Handlers
@@ -96,7 +114,7 @@ namespace fictionalbroccoli.ViewModels
 
         private void HandleTag(string text)
         {
-            Console.WriteLine(text);
+            Console.WriteLine("Text is " + text);
             if(FilterTagList.Contains(text)) // If it contains, it deletes
             {
                 Console.WriteLine("Contains " + text + "deleting");
@@ -120,13 +138,18 @@ namespace fictionalbroccoli.ViewModels
         private void InitOrReset()
         {
             Registrations = new ObservableCollection<Registration>(_registerService.GetAll());
+            DoDate();
+            SortUp();
+        }
+
+        private void DoDate()
+        {
             foreach (Registration registration in Registrations)
             {
                 registration.DateText = ConvertDateToHumanText(registration.Date);
                 if (registration.ImagePath == null)
                     registration.ImagePath = "greenbox.png";
             }
-            SortUp();
         }
 
         private void HandleSort(Registration obj)
@@ -164,8 +187,6 @@ namespace fictionalbroccoli.ViewModels
 
             DateTime today = DateTime.Now;
             TimeSpan diff = today.Subtract(date);
-
-            Console.WriteLine(diff.Days % 30);
 
             if (diff.Days / 365 >= 1)
                 return String.Concat(DateText, diff.Days / 365, " ans");

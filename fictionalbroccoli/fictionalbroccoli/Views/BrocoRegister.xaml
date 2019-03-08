@@ -105,6 +105,20 @@
             </StackLayout>
         </StackLayout>
         
+        <SearchBar
+                Text="{ Binding SearchText }"
+                Placeholder="Recherche…"
+                HeightRequest="50"
+                HorizontalOptions="FillAndExpand"
+                VerticalOptions="FillAndExpand">
+                <SearchBar.Behaviors>
+                    <b:EventToCommandBehavior
+                        EventName="TextChanged"
+                        Command="{Binding CommandSearch}"
+                    />
+                </SearchBar.Behaviors>
+            </SearchBar>
+        
         <!--List-->
         <ListView x:Name="ListRegister" ItemsSource="{Binding Registrations}" HasUnevenRows="True" SelectionMode="Single" SeparatorColor="Transparent">
             <ListView.Behaviors>
